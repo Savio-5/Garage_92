@@ -1,0 +1,17 @@
+{
+    "name": "savio/garage92",
+    "autoload": {
+        "psr-4": {
+            "Savio\\Garage92\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Savio Silveira",
+            "email": "s3.silveira@gmail.com"
+        }
+    ],
+    "require": {
+        "razorpay/razorpay": "2.*"
+    }
+}
