@@ -21,10 +21,10 @@
                     <div class="col-lg-5 col-md-6">
                         <div class="footer-link">
                             <h2>Popular Links</h2>
-                            <a href="index.php">Home</a>
-                            <a href="about.php">About Us</a>
-                            <a href="get-appointment.php">Service Booking</a>
-                            <a href="contact.php">Contact Us</a>
+                            <a href="../index.php">Home</a>
+                            <a href="../about.php">About Us</a>
+                            <a href="../get-appointment.php">Service Booking</a>
+                            <a href="../contact.php">Contact Us</a>
                         </div>
                     </div>
              

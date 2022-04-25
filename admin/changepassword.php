@@ -11,7 +11,7 @@ if (strlen($_SESSION['adid'] == 0)) {
     if (isset($_POST['submit'])) {
         $adminid = $_SESSION['adid'];
         $query = mysqli_query($conn, "select ID, Password from tbladmin where ID='$adminid'");
-    $row = mysqli_fetch_array($query);
+        $row = mysqli_fetch_array($query);
         if (password_verify($_POST['currentpassword'], $row['Password'])) {
             $newpassword = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
             mysqli_query($conn, "update tbladmin set Password='$newpassword' where ID='$adminid'");
@@ -39,14 +39,11 @@ if (strlen($_SESSION['adid'] == 0)) {
 
     <body class="sb-nav-fixed">
         <?php include('./includes/headeradmin.php'); ?>
-        <?php include './includes/sidenavadmin.php' ?>
+        <?php include('./includes/sidenavadmin.php'); ?>
         <div id="layoutSidenav_content">
 
             <main>
                 <div class="container-fluid px-4">
-
-
-
                     <div class="content-wrapper">
 
                         <!-- Main content -->
@@ -121,32 +118,36 @@ if (strlen($_SESSION['adid'] == 0)) {
                             </div>
                         </section>
                     </div>
+                </div>
             </main>
-            <?php include './includes/footeradmin.php' ?>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-            <script>
-window.addEventListener('DOMContentLoaded', event => {
+            <?php include('./includes/footeradmin.php'); ?>
+        </div>
+        </div>
 
-    // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    if (sidebarToggle) {
-        // Uncomment Below to persist sidebar toggle between refreshes
-        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        //     document.body.classList.toggle('sb-sidenav-toggled');
-        // }
-        sidebarToggle.addEventListener('click', event => {
-            event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-        });
-    }
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', event => {
 
-});
-</script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-            <script src="js/datatables-simple-demo.js"></script>
+                // Toggle the side navigation
+                const sidebarToggle = document.body.querySelector('#sidebarToggle');
+                if (sidebarToggle) {
+                    // Uncomment Below to persist sidebar toggle between refreshes
+                    // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                    //     document.body.classList.toggle('sb-sidenav-toggled');
+                    // }
+                    sidebarToggle.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.toggle('sb-sidenav-toggled');
+                        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                    });
+                }
+
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
     </body>
 
     </html>

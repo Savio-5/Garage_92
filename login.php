@@ -2,7 +2,12 @@
 // Initialize the session
 session_start();
 
-require "./admin/includes/config_admin.php";
+if (isset($_SESSION["sid"])) {
+  header("location: index.php");
+  exit;
+}
+
+require "./includes/config.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
   {

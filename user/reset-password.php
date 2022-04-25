@@ -8,13 +8,13 @@ session_start();
 //     exit;
 // }
 
-if (strlen($_SESSION['sid']==0)) {
-    header('location:logout.php');
+if (!isset($_SESSION['sid'])) {
+    header('location: login.php');
 }
 
 // Include config file
 
-require "./admin/includes/config_admin.php";
+require "../includes/config.php";
  
 // Define variables and initialize with empty values
 $new_password = $confirm_password = "";
@@ -92,12 +92,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="../lib/animate/animate.min.css" rel="stylesheet">
+        <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
+        <link href="../css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
         <style>
         body{ font: 14px sans-serif; }
@@ -110,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </head>
 
     <body>
-    <?php include_once('includes/header.php');?>
+    <?php include_once('../includes/user/header.php');?>
 
 
     <div class="wrapper">
@@ -135,24 +135,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div> 
 
         <!-- Footer Start -->
-    <?php include_once('includes/footer.php');?>
+    <?php include_once('../includes/user/footer.php');?>
 
     
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/counterup/counterup.min.js"></script>
-        
-        <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+        <script src="./lib/easing/easing.min.js"></script>
+        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="../lib/waypoints/waypoints.min.js"></script>
+        <script src="../lib/counterup/counterup.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <script src="../js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>

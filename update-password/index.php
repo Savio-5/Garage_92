@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION["sid"])) {
-  header("location: http://localhost/Garage92/index.php");
+  header("location: ./index.php");
   exit;
 }
 ?>
@@ -34,7 +34,7 @@ if (isset($_SESSION["sid"])) {
     </head>
 
     <body>
-    <?php include_once('../includes/header.php');?>
+    <?php include_once('../includes/user/header.php');?>
 
 
     <div class="container mt-5">
@@ -56,7 +56,7 @@ if (isset($_SESSION["sid"])) {
       </div>
 
         <!-- Footer Start -->
-    <?php include_once('../includes/footer.php');?>
+    <?php include_once('../includes/user/footer.php');?>
 
     
 
@@ -68,9 +68,6 @@ if (isset($_SESSION["sid"])) {
         <script src="../lib/waypoints/waypoints.min.js"></script>
         <script src="../lib/counterup/counterup.min.js"></script>
         
-        <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
 
         <!-- Template Javascript -->
         <script src="../js/main.js"></script>

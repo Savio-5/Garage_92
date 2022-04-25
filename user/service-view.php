@@ -1,10 +1,10 @@
 <?php
 session_start();
-require "../admin/includes/config_admin.php";
+require "../includes/config.php";
 
 $msg = "";
-if (strlen($_SESSION['sid'] == 0)) {
-    header('http://localhost/Garage92/logout.php');
+if (!isset($_SESSION['sid'])) {
+    header('./login.php');
 } else {
 
 ?>
@@ -37,16 +37,15 @@ if (strlen($_SESSION['sid'] == 0)) {
         <!-- Template Stylesheet -->
         <link href="../css/style.css" rel="stylesheet">
         <script type="text/javascript">
-  function printdata()
-  {
-    window.print();
-  }
-</script>
+            function printdata() {
+                window.print();
+            }
+        </script>
     </head>
 
     <body>
 
-        <?php include('../includes/header.php') ?>
+        <?php include('../includes/user/header.php') ?>
         <div class="bg-white rounded-lg d-block d-sm-flex">
             <!-- <div class="profile-tab-nav border-right">
 					<div class="p-4"> -->
@@ -76,15 +75,15 @@ if (strlen($_SESSION['sid'] == 0)) {
                             <h4 class="text-center"><?php echo $name ?></h4>
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link" href="http://localhost/Garage92/user/service-request.php" id="account-tab">
+                            <a class="nav-link" href="service-request.php" id="account-tab">
                                 <!-- <i class="fa fa-home text-center mr-1"></i> -->
                                 Service Request Form
                             </a>
-                            <a class="nav-link active" href="http://localhost/Garage92/user/service-history.php" id="">
+                            <a class="nav-link active" href="service-history.php" id="">
                                 <!-- <i class="fa fa-key text-center mr-1"></i> -->
                                 Service Request History
                             </a>
-                            <a class="nav-link" href="http://localhost/Garage92/user/enquiry-request.php" id="">
+                            <a class="nav-link" href="enquiry-request.php" id="">
                                 <!-- <i class="fa fa-user text-center mr-1"></i> -->
                                 Enquiry
                             </a>
@@ -235,7 +234,7 @@ if (strlen($_SESSION['sid'] == 0)) {
             </div>
 
         </div>
-        <?php include('../includes/footer.php') ?>
+        <?php include('../includes/user/footer.php') ?>
 
 
 
@@ -254,7 +253,7 @@ if (strlen($_SESSION['sid'] == 0)) {
         <script src="mail/contact.js"></script> -->
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <script src="../js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     </body>

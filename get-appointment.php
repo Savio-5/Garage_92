@@ -1,7 +1,7 @@
 <?php //error_reporting(0);
 session_start();
 
-require "./admin/includes/config_admin.php";
+require "./includes/config.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['sid'])) {
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $query = mysqli_query($conn, "insert into tblservicerequest(UserId,Category,ServiceNumber,VehicleName,VehicleModel,VehicleBrand,VehicleRegno,ServiceDate,ServiceTime,DeliveryType,PickupAddress) value('$uid','$category','$sernumber','$vehname','$vehmodel','$vehbrand','$vehrego','$vehservicedate','$vehservicetime','$deltype','$pickupadd')");
             if ($query) {
                 echo "<script>alert('Data has been added successfully.');</script>";
-                echo "<script>window.location.href =get-appointment.php'</script>";
+                echo "<script>window.location.href = get-appointment.php'</script>";
             } else {
                 echo "<script>alert('Something went wrong.Please try again.');</script>";
             }

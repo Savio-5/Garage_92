@@ -8,7 +8,7 @@ if(isset($_SESSION["sid"])){
 
 if(isset($_POST['password-reset-token']) && $_POST['email'])
 {
-    require("../admin/includes/config_admin.php");
+    require("../includes/config.php");
     
     $emailId = $_POST['email'];
     $result = mysqli_query($conn,"SELECT * FROM tbluser WHERE email='" . $emailId . "'");
@@ -27,7 +27,7 @@ if(isset($_POST['password-reset-token']) && $_POST['email'])
     $output='<p>Dear user,</p>';
     $output.='<p>Please click on the following link to reset your password.</p>';
     $output.='<p>-------------------------------------------------------------</p>';
-    $output.="<p><a href='http://localhost/Garage92/update-password/reset-password.php?key=".$emailId."&token=".$token."'>Click To Reset password</a></p>";		
+    $output.="<p><a href='".$url."update-password/reset-password.php?key=".$emailId."&token=".$token."'>Click To Reset password</a></p>";		
     $output.='<p>-------------------------------------------------------------</p>';
     $output.='<p>Please be sure to copy the entire link into your browser.The link will expire after 1 day for security reason.</p>';
     $output.='<p>If you did not request this forgotten password email, no action is needed, your password will not be reset. However, you may want to log into your account and change your security password as someone may have guessed it.</p>';   	
@@ -47,7 +47,7 @@ if(isset($_POST['password-reset-token']) && $_POST['email'])
     if($mail->Send())
     {
       echo "<script>alert('Check Your Email and Click on the link sent to your email.');</script>";
-      echo "<script>window.location.href ='index.php'</script>";
+      echo "<script>window.location.href = index.php'</script>";
     }
     else
     {

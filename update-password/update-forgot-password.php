@@ -2,13 +2,13 @@
 session_start();
 
 if(isset($_SESSION["sid"])){
-  header("location: http://localhost/Garage92/logout.php");
+  header("location: ./index.php");
   exit;
 }
 
 if(isset($_POST['password']) && $_POST['reset_link_token'] && $_POST['email'])
 {
-  require("../admin/includes/config_admin.php");
+  require("../includes/config.php");
   
   $emailId = $_POST['email'];
   $token = $_POST['reset_link_token'];
@@ -30,10 +30,9 @@ if(isset($_POST['password']) && $_POST['reset_link_token'] && $_POST['email'])
    }else{
       // echo "<p>Something goes wrong. Please try again</p>";
       echo "<script>alert(Something gone wrong. Please try again.);</script>";
-      echo "<script>window.location.href ='index.php'</script>";
+      echo "<script>window.location.href = 'index.php'</script>";
       
    }
    
 }
 //mysqli_close($link);
-?>

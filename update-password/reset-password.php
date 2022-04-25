@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION["sid"])){
-  header("location: http://localhost/Garage92/index.php");
+  header("location: ./index.php");
   exit;
 }
 ?>
@@ -33,7 +33,7 @@ if(isset($_SESSION["sid"])){
     </head>
 
     <body>
-    <?php include_once('../includes/header.php');?>
+    <?php include_once('../includes/user/header.php');?>
 
 
     <div class="container mt-5">
@@ -45,7 +45,7 @@ if(isset($_SESSION["sid"])){
           <?php
             if($_GET['key'] && $_GET['token'])
             {
-              require("../admin/includes/config_admin.php");
+              require("../includes/config.php");
               
               $email = $_GET['key'];
               $token = $_GET['token'];
@@ -56,7 +56,7 @@ if(isset($_SESSION["sid"])){
               if (mysqli_num_rows($query) > 0) {
                $row= mysqli_fetch_array($query);
               if($row['exp_date'] >= $curDate){ ?>
-              <form action="update-forget-password.php" method="post">
+              <form action="update-forgot-password.php" method="post">
                 <input type="hidden" name="email" value="<?php echo $email;?>">
                 <input type="hidden" name="reset_link_token" value="<?php echo $token;?>">
                 <div class="form-group">
@@ -80,7 +80,7 @@ if(isset($_SESSION["sid"])){
       </div>
 
         <!-- Footer Start -->
-    <?php include_once('../includes/footer.php');?>
+    <?php include_once('../includes/user/footer.php');?>
 
     
 
@@ -88,13 +88,9 @@ if(isset($_SESSION["sid"])){
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="../lib/easing/easing.min.js"></script>
-        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- <script src="../lib/owlcarousel/owl.carousel.min.js"></script> -->
         <script src="../lib/waypoints/waypoints.min.js"></script>
         <script src="../lib/counterup/counterup.min.js"></script>
-        
-        <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
 
         <!-- Template Javascript -->
         <script src="../js/main.js"></script>

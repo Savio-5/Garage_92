@@ -5,21 +5,21 @@ session_start();
 require './includes/config_admin.php';
 $msg = "";
 
-if (strlen($_SESSION['adid']==0)) {
+if (strlen($_SESSION['adid'] == 0)) {
     header('location:logout.php');
-    } else{
-  
-  //FOr Profile Updation
-  if(isset($_POST['submit']))
-    {
-      $adminid=$_SESSION['adid'];
-       $AName=$_POST['adminname'];
-       $query=mysqli_query($conn, "update tbladmin set AdminName='$AName' where ID='$adminid'");
-      if ($query) {
-      $msg="Admin profile has been updated.";
-    }else{
-        $msg="Something Went Wrong. Please try again.";
-  }}
+} else {
+
+    //FOr Profile Updation
+    if (isset($_POST['submit'])) {
+        $adminid = $_SESSION['adid'];
+        $AName = $_POST['adminname'];
+        $query = mysqli_query($conn, "update tbladmin set AdminName='$AName' where ID='$adminid'");
+        if ($query) {
+            $msg = "Admin profile has been updated.";
+        } else {
+            $msg = "Something Went Wrong. Please try again.";
+        }
+    }
 ?>
 
     <!DOCTYPE html>
@@ -41,121 +41,123 @@ if (strlen($_SESSION['adid']==0)) {
         <?php include('./includes/headeradmin.php'); ?>
         <?php include './includes/sidenavadmin.php' ?>
         <div id="layoutSidenav_content">
-        <div class="container-fluid px-4">
-<div class="content-wrapper">
+
 
 
             <main>
-                <!-- Start Page content -->
-                <div class="content">
-                    <div class="container-fluid">
+                <div class="container-fluid px-4">
+                    <div class="content-wrapper">
+                        <!-- Start Page content -->
+                        <div class="content">
+                            <div class="container-fluid">
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h4 class="m-t-0 header-title">Update Admin Profile</h4>
-                                    <p class="text-muted m-b-30 font-14">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card-box">
+                                            <h4 class="m-t-0 header-title">Update Admin Profile</h4>
+                                            <p class="text-muted m-b-30 font-14">
 
-                                    </p>
+                                            </p>
 
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="p-20">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="p-20">
 
-                                                <p style="font-size:16px; color:red" align="center">
-                                                    <?php if ($msg) {
-                                                        echo $msg;
-                                                    }  ?> </p>
+                                                        <p style="font-size:16px; color:red" align="center">
+                                                            <?php if ($msg) {
+                                                                echo $msg;
+                                                            }  ?> </p>
 
-                                                <form class="form-horizontal" role="form" method="post">
-                                                    <?php
-                                                    $adminid = $_SESSION['adid'];
-                                                    $ret = mysqli_query($conn, "select * from tbladmin where ID='$adminid'");
-                                                    $cnt = 1;
-                                                    while ($row = mysqli_fetch_array($ret)) {
-                                                    ?>
+                                                        <form class="form-horizontal" role="form" method="post">
+                                                            <?php
+                                                            $adminid = $_SESSION['adid'];
+                                                            $ret = mysqli_query($conn, "select * from tbladmin where ID='$adminid'");
+                                                            $cnt = 1;
+                                                            while ($row = mysqli_fetch_array($ret)) {
+                                                            ?>
 
 
-                                                        <div class="form-group row">
-                                                            <label class="col-2 col-form-label" for="example-email">Admin Name</label>
-                                                            <div class="col-10">
-                                                                <input type="text" id="adminname" name="adminname" class="form-control" required="true" value="<?php echo $row['AdminName']; ?>">
+                                                                <div class="form-group row">
+                                                                    <label class="col-2 col-form-label" for="example-email">Admin Name</label>
+                                                                    <div class="col-10">
+                                                                        <input type="text" id="adminname" name="adminname" class="form-control" required="true" value="<?php echo $row['AdminName']; ?>">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-2 col-form-label">Mobile Number</label>
+                                                                    <div class="col-10">
+                                                                        <input type="text" class="form-control" name="mobilenumber" id="mobilenumber" required="true" readonly="true" value="<?php echo $row['MobileNumber']; ?>">
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-2 col-form-label">Email</label>
+                                                                    <div class="col-10">
+                                                                        <input type="email" class="form-control" name="email" id="email" required="true" readonly="true" value="<?php echo $row['Email']; ?>">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-2 col-form-label">Admin Registration Date</label>
+                                                                    <div class="col-10">
+                                                                        <input type="text" class="form-control" name="regdate" id="regdate" required="true" readonly="true" value="<?php echo $row['AdminRegdate']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>
+
+
+
+                                                            <div class="form-group row">
+                                                                <div class="col-12">
+                                                                    <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Update</button>
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="form-group row">
-                                                            <label class="col-2 col-form-label">Mobile Number</label>
-                                                            <div class="col-10">
-                                                                <input type="text" class="form-control" name="mobilenumber" id="mobilenumber" required="true" readonly="true" value="<?php echo $row['MobileNumber']; ?>">
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="form-group row">
-                                                            <label class="col-2 col-form-label">Email</label>
-                                                            <div class="col-10">
-                                                                <input type="email" class="form-control" name="email" id="email" required="true" readonly="true" value="<?php echo $row['Email']; ?>">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group row">
-                                                            <label class="col-2 col-form-label">Admin Registration Date</label>
-                                                            <div class="col-10">
-                                                                <input type="text" class="form-control" name="regdate" id="regdate" required="true" readonly="true" value="<?php echo $row['AdminRegdate']; ?>">
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
-
-
-
-                                                    <div class="form-group row">
-                                                        <div class="col-12">
-                                                            <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Update</button>
-                                                        </div>
+                                                        </form>
                                                     </div>
+                                                </div>
 
-                                                </form>
                                             </div>
-                                        </div>
+                                            <!-- end row -->
 
-                                    </div>
-                                    <!-- end row -->
+                                        </div> <!-- end card-box -->
+                                    </div><!-- end col -->
+                                </div>
+                            </div> <!-- container -->
 
-                                </div> <!-- end card-box -->
-                            </div><!-- end col -->
-                        </div>
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
+                        </div> <!-- content -->
+                    </div>
+                </div>
             </main>
-
-</div>
-    </div>
             <?php include './includes/footeradmin.php' ?>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-            <script>
-window.addEventListener('DOMContentLoaded', event => {
+        </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', event => {
 
-    // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    if (sidebarToggle) {
-        // Uncomment Below to persist sidebar toggle between refreshes
-        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        //     document.body.classList.toggle('sb-sidenav-toggled');
-        // }
-        sidebarToggle.addEventListener('click', event => {
-            event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-        });
-    }
+                // Toggle the side navigation
+                const sidebarToggle = document.body.querySelector('#sidebarToggle');
+                if (sidebarToggle) {
+                    // Uncomment Below to persist sidebar toggle between refreshes
+                    // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                    //     document.body.classList.toggle('sb-sidenav-toggled');
+                    // }
+                    sidebarToggle.addEventListener('click', event => {
+                        event.preventDefault();
+                        document.body.classList.toggle('sb-sidenav-toggled');
+                        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                    });
+                }
 
-});
-</script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-            <script src="js/datatables-simple-demo.js"></script>
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
     </body>
 
     </html>

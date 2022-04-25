@@ -1,12 +1,9 @@
 <?php 
-// DB credentials.
-// define('DB_HOST','localhost');
-// define('DB_USER','root');
-// define('DB_PASS','5@Vio123');
-// define('DB_NAME','servicedb');
+include ('define.php');
+
 // Establish database connection.
 
-$conn = mysqli_connect("localhost", "root", "5@Vio123", "servicedb");
+$conn = mysqli_connect("localhost", "root", "5@Vio123", "vsmsdb2");
 
 // Check connection
 if($conn === false){

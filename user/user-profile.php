@@ -1,10 +1,10 @@
 <?php
 session_start();
-require "../admin/includes/config_admin.php";
+require "../includes/config.php";
 
 $msg = "";
-if (strlen($_SESSION['sid'] == 0)) {
-    header('http://localhost/Garage92/logout.php');
+if (!isset($_SESSION['sid'])) {
+    header('./login.php');
 } else {
     if (isset($_POST['submit'])) {
         $pid = $_SESSION['sid'];
@@ -24,12 +24,6 @@ if (strlen($_SESSION['sid'] == 0)) {
     <html lang="en">
 
     <head>
-        <!-- <meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css"> -->
-
         <title>GARAGE92 | Home Page</title>
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -38,10 +32,7 @@ if (strlen($_SESSION['sid'] == 0)) {
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"> -->
 
-        <!-- <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"> -->
-        <!-- <link href="lib/animate/animate.min.css" rel="stylesheet"> -->
         <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
@@ -50,7 +41,7 @@ if (strlen($_SESSION['sid'] == 0)) {
     </head>
 
     <body>
-        <?php include('../includes/header.php') ?>
+        <?php include('../includes/user/header.php') ?>
         <div class="bg-white rounded-lg d-block d-sm-flex">
             <!-- <div class="profile-tab-nav border-right">
 					<div class="p-4"> -->
@@ -80,15 +71,15 @@ if (strlen($_SESSION['sid'] == 0)) {
                             <h4 class="text-center"><?php echo $name ?></h4>
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link" href="http://localhost/Garage92/user/service-request.php" id="account-tab" >
+                            <a class="nav-link" href="service-request.php" id="account-tab" >
                                 <!-- <i class="fa fa-home text-center mr-1"></i> -->
                                 Service Request Form
                             </a>
-                            <a class="nav-link" href="http://localhost/Garage92/user/service-history.php" id="">
+                            <a class="nav-link" href="service-history.php" id="">
                                 <!-- <i class="fa fa-key text-center mr-1"></i> -->
                                 Service Request History
                             </a>
-                            <a class="nav-link" href="http://localhost/Garage92/user/enquiry-request.php" id="">
+                            <a class="nav-link" href="enquiry-request.php" id="">
                                 <!-- <i class="fa fa-user text-center mr-1"></i> -->
                                 Enquiry
                             </a>
@@ -185,7 +176,7 @@ if (strlen($_SESSION['sid'] == 0)) {
 
             </div> <!-- content -->
         </div>
-        <?php include('../includes/footer.php') ?>
+        <?php include('../includes/user/footer.php') ?>
 
 
 
@@ -193,15 +184,10 @@ if (strlen($_SESSION['sid'] == 0)) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script> -->
+        
         <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
         <script src="../lib/waypoints/waypoints.min.js"></script>
         <script src="../lib/counterup/counterup.min.js"></script>
-
-
-        <!-- Contact Javascript File -->
-        <!-- <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script> -->
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
