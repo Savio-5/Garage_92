@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <script type="text/javascript">
     function checkpass() {
-      if (document.signup.password.value != document.signup.confirm - password.value) {
+      if (document.signup.password.value != document.signup.confirm-password.value) {
         alert('Password and Repeat Password field does not match');
         document.signup.repeatpassword.focus();
         return false;
@@ -177,14 +177,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label class="form-label" for="name">Name:</label>
             <!-- pattern="^[a-zA-Z]+$" -->
             <input type="text" name="name" id="name" class="form-control form-control-mg" placeholder="Name" required />
-            <span class="invalid-feedback"><?php //echo $name_err; 
+            <span class="invalid-feedback">Invalid Name Format<?php //echo $name_err; 
                                             ?></span>
           </div>
 
           <div class="form-group form-outline mb-4">
             <label class="form-label" for="mobile">Mobile Number:</label>
             <!-- pattern="/(7|8|9)\d{9}/" -->
-            <input type="text" name="mobile" id="mobile" class="form-control form-control-mg" placeholder="Mobile Number" required />
+            <input type="tel" name="mobile" id="mobile" class="form-control form-control-mg" placeholder="Mobile Number" pattern="[0-9]{10}" required />
             <span class="invalid-feedback"><?php //echo $mobile_err; 
                                             ?></span>
           </div>
@@ -193,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="form-group form-outline mb-4">
             <label class="form-label" for="emails">Email:</label>
             <input type="email" name="emails" id="emails" class="form-control form-control-mg" value="" placeholder="Email Address" required />
-            <span class="invalid-feedback"><?php //echo $email_err; 
+            <span class="invalid-feedback">Invalid Email Address<?php //echo $email_err; 
                                             ?></span>
           </div>
 
@@ -201,12 +201,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="form-group">
             <div class="form-group form-outline mb-3">
               <label class="form-label" for="password">Password:</label>
-              <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter password" required />
+              <input type="password" name="password" id="password" class="form-control form-control-mg" pattern=".{6,}" placeholder="Enter password" required />
             </div>
 
             <div class="form-group form-outline mb-3">
               <label class="form-label" for="confirm-password">Confirm Password:</label>
-              <input type="password" name="confirm-password" id="confirm-password" class="form-control form-control-lg" placeholder="Confirm password" required />
+              <input type="password" name="confirm-password" id="confirm-password" class="form-control form-control-mg" pattern=".{6,}" placeholder="Confirm password" required />
             </div>
           </div>
 

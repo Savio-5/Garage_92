@@ -9,7 +9,7 @@ if (strlen($_SESSION['adid'] == 0)) {
     header('location:logout.php');
 } else {
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit-add-mechanics'])) {
         $macname = $_POST['macname'];
         $mobno = $_POST['mobilenumber'];
         $email = $_POST['email'];
@@ -50,7 +50,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                 <div class="container-fluid px-4">
                     <!-- Start Page content -->
                     <div class="content-wrapper">
-                        <div class="container-fluid mt-5">
+                        <div class="container-fluid mt-4">
 
                             <div class="row">
                                 <div class="col-12">
@@ -68,7 +68,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                             echo $msg;
                                                         }  ?> </p>
 
-                                                    <form class="form-horizontal" role="form" method="post" name="submit">
+                                                    <form class="form-horizontal" role="form" method="post" name="submit-add-mechanics">
 
                                                         <div class="form-group row">
                                                             <label class="col-2 col-form-label" for="example-email">Mechanic Name</label>
@@ -79,7 +79,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                         <div class="form-group row">
                                                             <label class="col-2 col-form-label" for="example-email">Mechanic Contact Number</label>
-                                                            <div class="col-10">
+                                                            <div class="col-10  mt-3">
                                                                 <input type="text" id="mobilenumber" name="mobilenumber" class="form-control" maxlength="10" required="true">
                                                             </div>
                                                         </div>
@@ -94,7 +94,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                         <div class="form-group row">
                                                             <label class="col-2 col-form-label" for="example-email">Mechanic Address</label>
-                                                            <div class="col-10">
+                                                            <div class="col-10 mt-3">
                                                                 <input type="text" id="macadd" name="macadd" class="form-control" required="true">
                                                             </div>
                                                         </div>
@@ -102,8 +102,8 @@ if (strlen($_SESSION['adid'] == 0)) {
 
 
                                                         <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <p style="text-align: center;"> <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Add</button></p>
+                                                            <div class="col-12 mt-4">
+                                                                <p style="text-align: center;"> <button type="submit" name="submit-add-mechanics" class="btn btn-info btn-min-width mr-1 mb-1">Add</button></p>
                                                             </div>
                                                         </div>
 

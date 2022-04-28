@@ -52,17 +52,17 @@ if (strlen($_SESSION['adid'] == 0)) {
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">
                                     <!-- <i class="fa fa-list-ul" aria-hidden="true"></i> -->
-                                    <?php $query2 = mysqli_query($conn, "Select * from tblmechanics");
-                                    $meccount = mysqli_num_rows($query2);
+                                    <?php $query3=mysqli_query($conn,"Select * from tblservicerequest");
+                                    $sercount=mysqli_num_rows($query3);
                                     ?>
-                                    <label><?php echo $meccount; ?></label><br>
+                                    <label><?php echo $sercount; ?></label><br>
 
                                     <span> Total Service Requests</span>
                                 </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                <!-- <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="http://localhost/Garage92/admin1/?page=booking/all-bookings">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
@@ -74,247 +74,66 @@ if (strlen($_SESSION['adid'] == 0)) {
                                     ?>
                                     <label><?php echo $meccount; ?></label><br>
 
-                                    <span> Total Service Requests</span>
+                                    <span> Total Mechanics</span>
                                 </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                <!-- <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="http://localhost/Garage92/admin1/?page=booking/completed-booking">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-success text-white mb-4">
                             <div class="card-body">
                                     <!-- <i class="fa fa-list-ul" aria-hidden="true"></i> -->
-                                    <?php $query2 = mysqli_query($conn, "Select * from tblmechanics");
-                                    $meccount = mysqli_num_rows($query2);
-                                    ?>
-                                    <label><?php echo $meccount; ?></label><br>
+                                    <?php $query31 = mysqli_query($conn, "Select * from tblservicerequest where AdminStatus is null");
+                                                        $newrequest = mysqli_num_rows($query31);
+                                                        ?>
+                                    <label><?php echo $newrequest; ?></label><br>
 
-                                    <span> Total Service Requests</span>
+                                    <span> New Service Requests</span>
                                 </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                <!-- <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="http://localhost/Garage92/admin1/?page=booking/new-booking">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-danger text-white mb-4">
                             <div class="card-body">
                                     <!-- <i class="fa fa-list-ul" aria-hidden="true"></i> -->
-                                    <?php $query2 = mysqli_query($conn, "Select * from tblmechanics");
-                                    $meccount = mysqli_num_rows($query2);
-                                    ?>
-                                    <label><?php echo $meccount; ?></label><br>
+                                    <?php $query32 = mysqli_query($conn, "Select * from tblservicerequest where AdminStatus='2'");
+                                                        $rejectedrequest = mysqli_num_rows($query32);
+                                                        ?>
+                                    <label><?php echo $rejectedrequest; ?></label><br>
 
-                                    <span> Total Service Requests</span>
+                                    <span> Rejected Service Requests</span>
                                 </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                <!-- <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="http://localhost/Garage92/admin1/?page=manage-enquiries">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-info text-white mb-4">
+                            <div class="card-body">
+                                    <!-- <i class="fa fa-list-ul" aria-hidden="true"></i> -->
+                                    <?php $query33 = mysqli_query($conn, "Select * from tblservicerequest where AdminStatus='3'");
+                                                        $compsercount = mysqli_num_rows($query33);
+                                                        ?>
+                                    <label><?php echo $compsercount; ?></label><br>
+
+                                    <span> Completed Services</span>
                                 </div>
+                                <!-- <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="http://localhost/Garage92/admin1/?page=manage-enquiries">View Details</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
-
-
-                    <!-- Start Page content -->
-
-                    <div class="content-wrapper">
-
-                        <div class="container-fluid">
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card-box">
-                                        <h4 class="header-title mb-4">Account Overview</h4>
-
-                                        <div class="row">
-                                            <!-- <div class="col-sm-6 col-lg-6 col-xl-3">
-        <div class="card-box mb-0 widget-chart-two">
-            <div class="float-right"> -->
-                                            <?php //$query=mysqli_query($conn,"Select * from tbluser");
-                                            //$usercount=mysqli_num_rows($query);
-                                            ?>
-
-                                            <!-- <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-data-fgColor="#0acf97" value="" data-skin="tron" data-angleOffset="180"
-data-readOnly=true data-thickness=".2"/> -->
-                                            <!-- <label><?php //echo $usercount;
-                                                        ?></label> -->
-                                            <!-- </div>
-            <div class="widget-chart-two-content">
-
-                <p class="text-muted mb-0 mt-2">Total Registered User</p>
-                
-            </div>
-
-        </div> -->
-                                            <!-- </div> -->
-
-                                            <!-- <div class="col-sm-6 col-lg-6 col-xl-3">
-        <div class="card-box mb-0 widget-chart-two">
-            <div class="float-right"> -->
-                                            <?php //$query1=mysqli_query($conn,"Select * from tblenquiry");
-                                            //$enqcount=mysqli_num_rows($query1);
-                                            ?>
-                                            <!-- <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                       data-fgColor="#f9bc0b" value="" data-skin="tron" data-angleOffset="180"
-                       data-readOnly=true data-thickness=".2"/> -->
-                                            <!-- <label><?php //echo $enqcount;
-                                                        ?></label>
-            </div>
-            <div class="widget-chart-two-content">
-                <p class="text-muted mb-0 mt-2">Total Enquiry</p>
-                
-            </div>
-
-        </div>
-    </div> -->
-
-                                            <div class="col-sm-6 col-lg-6 col-xl-3">
-                                                <div class="card-box mb-0 widget-chart-two">
-                                                    <div class="float-right">
-                                                        <?php $query2 = mysqli_query($conn, "Select * from tblmechanics");
-                                                        $meccount = mysqli_num_rows($query2);
-                                                        ?>
-                                                        <!-- <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                       data-fgColor="#f1556c" value="" data-skin="tron" data-angleOffset="180"
-                       data-readOnly=true data-thickness=".2"/> -->
-                                                        <label><?php echo $meccount; ?></label>
-                                                    </div>
-                                                    <div class="widget-chart-two-content">
-                                                        <p class="text-muted mb-0 mt-2">Total Mechanics</p>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6 col-lg-6 col-xl-3">
-                                                <div class="card-box mb-0 widget-chart-two">
-                                                    <div class="float-right">
-
-                                                    </div>
-                                                    <div class="widget-chart-two-content">
-                                                        <p class="text-muted mb-0 mt-2">Total Service Requests</p>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-
-
-
-
-                                        </div>
-                                        <!-- end row -->
-
-
-
-                                        <div class="row">
-
-
-
-
-
-
-                                            <div class="col-sm-6 col-lg-6 col-xl-3">
-                                                <div class="card-box mb-0 widget-chart-two">
-                                                    <div class="float-right">
-                                                        <?php $query31 = mysqli_query($conn, "Select * from tblservicerequest where AdminStatus is null");
-                                                        $newrequest = mysqli_num_rows($query31);
-                                                        ?>
-                                                        <!-- <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                       data-fgColor="#2d7bf4" value="" data-skin="tron" data-angleOffset="180"
-                       data-readOnly=true data-thickness=".2"/> -->
-                                                        <label><?php echo $newrequest; ?></label>
-                                                    </div>
-                                                    <div class="widget-chart-two-content">
-                                                        <p class="text-muted mb-0 mt-2">New Service Requests</p>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="col-sm-6 col-lg-6 col-xl-3">
-                                                <div class="card-box mb-0 widget-chart-two">
-                                                    <div class="float-right">
-                                                        <?php $query32 = mysqli_query($conn, "Select * from tblservicerequest where AdminStatus='2'");
-                                                        $rejectedrequest = mysqli_num_rows($query32);
-                                                        ?>
-                                                        <!-- <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                       data-fgColor="#f1556c" value="" data-skin="tron" data-angleOffset="180"
-                       data-readOnly=true data-thickness=".2"/> -->
-                                                        <label><?php echo $rejectedrequest; ?></label>
-                                                    </div>
-                                                    <div class="widget-chart-two-content">
-                                                        <p class="text-muted mb-0 mt-2">Rejected Service Requests</p>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-sm-6 col-lg-6 col-xl-3">
-                                                <div class="card-box mb-0 widget-chart-two">
-                                                    <div class="float-right">
-                                                        <?php $query33 = mysqli_query($conn, "Select * from tblservicerequest where AdminStatus='3'");
-                                                        $compsercount = mysqli_num_rows($query33);
-                                                        ?>
-                                                        <!-- <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                       data-fgColor="#0acf97" value="" data-skin="tron" data-angleOffset="180"
-                       data-readOnly=true data-thickness=".2"/> -->
-                                                        <label><?php echo $compsercount; ?></label>
-                                                    </div>
-                                                    <div class="widget-chart-two-content">
-
-                                                        <p class="text-muted mb-0 mt-2">Completed Services </p>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-
-
-
-
-
-
-
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end row -->
-
-
-
-
-                            <!-- end row -->
-
-
-
-                            <!-- end row -->
-
-
-
-
-                        </div> <!-- container -->
-
-                    </div> <!-- content -->
                 </div>
             </div>
         </main>

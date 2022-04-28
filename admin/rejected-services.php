@@ -35,7 +35,7 @@ if (strlen($_SESSION['adid'] == 0)) {
             <main>
                 <div class="container-fluid px-4">
                     <div class="content-wrapper">
-                        <div class="content m-2 mt-3">
+                        <div class="content mt-4">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12">

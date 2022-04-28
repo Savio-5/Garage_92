@@ -10,14 +10,14 @@
                     </a>
 
                     <a class="nav-link collapsed" href="javascript: void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fal fa-car-mechanic"></i></div>
                         Mechanics
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion1">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages1">
                             <a class="nav-link collapsed" href="add-mechanics.php">
-                                All Mechanics
+                                Add Mechanics
                             </a>
                             <a class="nav-link collapsed" href="manage-mechanics.php">
                                 Manage Mechanics
@@ -84,7 +84,7 @@
 
 
                     <a class="nav-link" href="invoices.php">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-file-invoice"></i></div>
                         Generate Invoice
                     </a>
                     <a class="nav-link collapsed" href="javascript: void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages5" aria-expanded="false" aria-controls="collapsePages5">
@@ -95,10 +95,10 @@
                     <div class="collapse" id="collapsePages5" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion5">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages5">
                             <a class="nav-link collapsed" href="notrespond-enquiry.php">
-                                Not Respond Enquiry
+                                Not Responded Enquiry
                             </a>
                             <a class="nav-link collapsed" href="respond-enquiry.php">
-                                Respond Enquiry
+                                Responded Enquiry
                             </a>
                         </nav>
                     </div>

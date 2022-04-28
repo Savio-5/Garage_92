@@ -7,6 +7,19 @@ if (strlen($_SESSION['adid'] == 0)) {
     header('location:logout.php');
 } else {
 
+    if (isset($_GET['id']) == !null) {
+        $id = $_GET['id'];
+        $result = mysqli_query($conn, "select * from tblservicerequest join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.ID='$id'");
+        $row = mysqli_fetch_array($result);
+        $service_num = $row['ServiceNumber'];
+        $text = "Invoice for the Service ID : ".$service_num."";
+        $total = $row['ServiceCharge'] + $row['PartsCharge'] + $row['OtherCharge'];
+        $fname = $row['FullName'];
+        $mno = $row['MobileNo'];
+        $email = $row['Email'];
+    }
+
+
 ?>
 
     <!DOCTYPE html>
@@ -31,10 +44,12 @@ if (strlen($_SESSION['adid'] == 0)) {
 
             <main>
                 <div class="container-fluid px-4">
-                    <div class="content-wrapper">
-                        <div class="container-fluid mt-4">
+                    <div class="content-wrapper mt-4">
+                        <div class="container-fluid">
 
-                            <form action="http://localhost/vsms/razorpay/invoices.php" method="post" id="invoice_form">
+                        <?php if(isset($_GET['id']) == null){ ?>
+
+                            <form action="../razorpay/invoices.php" method="post" id="invoice_form">
                                 <div class="table-responsive">
                                     <nav class="navbar navbar-default card">
                                         <div class="container-fluid">
@@ -53,7 +68,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                             <b>RECEIVER (BILL TO) INFORMATION</b><br>
                                                             <div class="form-group mt-1">
-                                                                <input type="text" name="receiver-name" id="receiver-name" class="form-control input-sm" placeholder="Enter Receiver Name">
+                                                                <input type="text" name="receiver-name" id="receiver-name" class="form-control input-sm" placeholder="Enter Receiver Name" value="">
                                                             </div>
                                                             <div class="form-group mt-1">
                                                                 <textarea name="invoice-description" id="invoice-description" class="form-control" placeholder="Invoice Description"></textarea>
@@ -62,11 +77,11 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                         <div class="col-md-4">
                                                             <b>INVOICE DETAILS</b><br>
                                                             <div class="form-group mt-1">
-                                                                <input type="number" name="receiver_phone-no" id="receiver_phone-no" class="form-control input-sm number_only" placeholder="Phone Number" min="0">
+                                                                <input type="number" name="receiver_phone-no" id="receiver_phone-no" class="form-control input-sm number_only" pattern="[0-9]{10}" placeholder="Phone Number" value="">
                                                             </div>
 
                                                             <div class="form-group mt-1">
-                                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control input-sm" placeholder="Receivers Email">
+                                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control input-sm" placeholder="Receivers Email" value="">
                                                             </div>
                                                             <div class="form-group mt-1">
                                                                 <input type="checkbox" name="draft-invoice" id="draft-invoice" value="1">
@@ -90,7 +105,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                                 <td><input type="text" name="item_name" id="item_name" class="form-control input-sm"></td>
                                                                 <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm"></td>
                                                                 <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0"></td>
-                                                                <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0"></td>
+                                                                <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value=""></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -109,6 +124,84 @@ if (strlen($_SESSION['adid'] == 0)) {
                                     </table>
                                 </div>
                             </form>
+
+                            <?php }else{ ?>
+                                <form action="../razorpay/invoices.php" method="post" id="invoice_form">
+                                <div class="table-responsive">
+                                    <nav class="navbar navbar-default card">
+                                        <div class="container-fluid">
+                                            <div class="navbar-header">
+                                                <h4 class="navbar-brand">Billing System</h4>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <table class="table table-bordered card">
+
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+
+                                                            <b>RECEIVER (BILL TO) INFORMATION</b><br>
+                                                            <div class="form-group mt-1">
+                                                                <input type="text" name="receiver-name" id="receiver-name" class="form-control input-sm" placeholder="Enter Receiver Name" value="<?php echo $fname ; ?>">
+                                                            </div>
+                                                            <div class="form-group mt-1">
+                                                                <textarea name="invoice-description" id="invoice-description" class="form-control" placeholder="Invoice Description" value=""><?php echo $text ; ?></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <b>INVOICE DETAILS</b><br>
+                                                            <div class="form-group mt-1">
+                                                                <input type="number" name="receiver_phone-no" id="receiver_phone-no" class="form-control input-sm number_only" pattern="[0-9]{10}" placeholder="Phone Number" value="<?php echo $mno; ?>">
+                                                            </div>
+
+                                                            <div class="form-group mt-1">
+                                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control input-sm" placeholder="Receivers Email" value="<?php echo $email; ?>">
+                                                            </div>
+                                                            <div class="form-group mt-1">
+                                                                <input type="checkbox" name="draft-invoice" id="draft-invoice" value="1">
+                                                                <label for="draft-invoice">Draft Invoice</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <table id="invoice-item-table" class="table table-bordered table-hover table-striped">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th width="5%">S/N.</th>
+                                                                <th width="20%">Item Name</th>
+                                                                <th width="20%">Description</th>
+                                                                <th width="5%">Quantity</th>
+                                                                <th width="12.5%" rowspan="1">Amount</th>
+                                                                <th width="3%" rowspan="2"></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span id="sr_no">1</span></td>
+                                                                <td><input type="text" name="item_name" id="item_name" class="form-control input-sm"></td>
+                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm"></td>
+                                                                <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0"></td>
+                                                                <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value="<?php echo $total; ?>"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <input type="hidden" name="total_item" id="total_item" value="1">
+                                                    <input type="submit" name="create_invoice" id="create_invoice" class="btn btn-success" value="Create">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

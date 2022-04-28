@@ -173,10 +173,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <!-- Checkbox -->
             <div class="form-check mb-0">
               
-              <input class="form-check-input me-2" type="checkbox" value="" id="remember-me" />
+              <!-- <input class="form-check-input me-2" type="checkbox" value="" id="remember-me" />
               <label class="form-check-label" for="remember-me">
                 Remember me
-              </label>
+              </label> -->
 
             </div>
             <a href="update-password/" class="text-body">Forgot password?</a>

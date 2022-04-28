@@ -66,9 +66,16 @@
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="about.php" class="nav-item nav-link">About</a>
-                            <a href="get-appointment.php" class="nav-item nav-link">Get Appointment</a>
+                            
                             <a href="location.php" class="nav-item nav-link">Emergency towing</a>
-                            <a href="contact.php" class="nav-item nav-link">Contact us</a>
+                            <?php
+                        if (isset($_SESSION['sid'])) {
+                        ?><a href="get-appointment.php" class="nav-item nav-link">Get Appointment</a>
+                        <a href="service-history.php" class="nav-item nav-link">Service History</a>
+                        <a href="enquiry-request.php" class="nav-item nav-link">Enquiry</a>
+                        
+                            <!-- <a href="contact.php" class="nav-item nav-link">Contact us</a> -->
+                            <?php } ?>
                         </div>
 
                         <?php
@@ -81,8 +88,8 @@
                                                 <path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path>
                                             </svg><!-- <i class="fas fa-user fa-fw"></i> Font Awesome fontawesome.com --></a>
                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" data-bs-popper="none">
-                                            <li><a class="dropdown-item" href="./user/user-profile.php">My Profile</a></li>
-                                            <li><a class="dropdown-item" href="./user/reset-password.php">Change Password</a></li>
+                                            <li><a class="dropdown-item" href="user-profile.php">My Profile</a></li>
+                                            <li><a class="dropdown-item" href="reset-password.php">Change Password</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>

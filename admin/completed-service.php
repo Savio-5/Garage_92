@@ -32,15 +32,13 @@ if (strlen($_SESSION['adid'] == 0)) {
         <div id="layoutSidenav_content">
 
             <main>
-                <div class="container-fluid px-4">
+                <div class="container-fluid px-4 mt-3">
                     <div class="content-wrapper">
 
                         <!-- Main content -->
                         <section class="content">
                             <div class="container-fluid">
                                 <!-- Start Page content -->
-                                <div class="content">
-                                    <div class="container-fluid">
 
                                         <div class="row">
                                             <div class="col-12">
@@ -96,8 +94,6 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                 </div> <!-- end card-box -->
                                             </div><!-- end col -->
                                         </div>
-                                    </div> <!-- container -->
-                                </div> <!-- content -->
                             </div>
                         </section>
                     </div>

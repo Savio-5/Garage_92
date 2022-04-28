@@ -9,7 +9,7 @@ if (strlen($_SESSION['adid'] == 0)) {
     header('location:logout.php');
 } else {
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit-add-category'])) {
         $catname = $_POST['catename'];
         $query = mysqli_query($conn, "insert into  tblcategory(VehicleCat) value('$catname')");
         if ($query) {
@@ -42,7 +42,7 @@ if (strlen($_SESSION['adid'] == 0)) {
         <div id="layoutSidenav_content">
 
                     <main>
-                        <div class="container-fluid px-4">
+                        <div class="container-fluid px-4 mt-4">
 
 
 
@@ -68,7 +68,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                                         <p style="font-size:16px; color:red" align="center">
                                                                         </p>
 
-                                                                        <form class="form-horizontal" role="form" method="post" name="submit">
+                                                                        <form class="form-horizontal" role="form" method="post" name="submit-add-category">
 
                                                                             <div class="form-group row">
                                                                                 <label class="col-2 col-form-label" for="example-email">Category Name</label>
@@ -80,8 +80,8 @@ if (strlen($_SESSION['adid'] == 0)) {
 
 
                                                                             <div class="form-group row">
-                                                                                <div class="col-12">
-                                                                                    <p style="text-align: center;"> <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Add</button></p>
+                                                                                <div class="col-12 mt-3">
+                                                                                    <p style="text-align: center;"> <button type="submit" name="submit-add-category" class="btn btn-info btn-min-width mr-1 mb-1">Add</button></p>
                                                                                 </div>
                                                                             </div>
 

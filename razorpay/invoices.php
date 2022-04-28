@@ -48,5 +48,6 @@ if(isset($_POST['draft-invoice'])){
   }
 }
 
+$result = $api->invoice->create($invoice);
 
-$api->invoice->create($invoice);
+// echo var_dump($result);

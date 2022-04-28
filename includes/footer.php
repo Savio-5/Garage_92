@@ -7,7 +7,7 @@
 
                             <p><i class="fa fa-map-marker-alt"></i>Cabesa Ward, St Cruz, Goa 403202</p>
                             <p><i class="fa fa-phone-alt"></i>+91 9511864023</p>
-                            <p><i class="fa fa-envelope"></i>garage.9ne2@gmail.com</p>
+                            <p><i class="fa fa-envelope"></i><a style="text-decoration: none; color: white;" href="mailto:garage.9ne2@gmail.com">garage.9ne2@gmail.com</a></p>
 
                                                     <div class="footer-social">
                                 <a class="btn" href=""><i class="fab fa-twitter"></i></a>
@@ -24,7 +24,7 @@
                             <a href="index.php">Home</a>
                             <a href="about.php">About Us</a>
                             <a href="get-appointment.php">Service Booking</a>
-                            <a href="contact.php">Contact Us</a>
+                            <!-- <a href="contact.php">Contact Us</a> -->
                         </div>
                     </div>
              

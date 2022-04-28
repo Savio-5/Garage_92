@@ -10,7 +10,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 } else {
 
     //For Updating    
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit-edit-mechanic-detail'])) {
         $macname = $_POST['macname'];
         $mobno = $_POST['mobilenumber'];
         $email = $_POST['email'];
@@ -76,7 +76,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                     ?>
 
 
-                                                        <form class="form-horizontal" role="form" method="post" name="submit">
+                                                        <form class="form-horizontal" role="form" method="post" name="submit-edit-mechanic-detail">
 
                                                             <div class="form-group row">
                                                                 <label class="col-2 col-form-label" for="example-email">Mechanic Name</label>
@@ -112,7 +112,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <p style="text-align: center;"> <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Update</button></p>
+                                                                <p style="text-align: center;"> <button type="submit" name="submit-edit-mechanic-detail" class="btn btn-info btn-min-width mr-1 mb-1">Update</button></p>
                                                             </div>
                                                         </div>
                                                         </form>

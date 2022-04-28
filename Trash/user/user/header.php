@@ -68,7 +68,7 @@
                             <a href="../about.php" class="nav-item nav-link">About</a>
                             <a href="../get-appointment.php" class="nav-item nav-link">Get Appointment</a>
                             <a href="../location.php" class="nav-item nav-link">Emergency towing</a>
-                            <a href="../contact.php" class="nav-item nav-link">Contact us</a>
+                            <!-- <a href="../contact.php" class="nav-item nav-link">Contact us</a> -->
                         </div>
 
                         <?php

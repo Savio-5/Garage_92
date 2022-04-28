@@ -8,7 +8,7 @@ $msg = "";
 if (strlen($_SESSION['adid'] == 0)) {
   header('location:logout.php');
 } else {
-  if (isset($_POST['submit'])) {
+  if (isset($_POST['submit-edit-category'])) {
     $catname = $_POST['catename'];
     $eid = substr(base64_decode($_GET['editid']), 0, -5);
 
@@ -69,7 +69,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                           ?>
 
 
-                            <form class="form-horizontal" role="form" method="post" name="submit">
+                            <form class="form-horizontal" role="form" method="post" name="submit-edit-category">
 
                               <div class="form-group row">
                                 <label class="col-2 col-form-label" for="example-email">Category Name</label>
@@ -83,7 +83,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                             <div class="form-group row">
                               <div class="col-12">
-                                <p style="text-align: center;"> <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Update</button></p>
+                                <p style="text-align: center;"> <button type="submit" name="submit-edit-category" class="btn btn-info btn-min-width mr-1 mb-1">Update</button></p>
                               </div>
                             </div>
                             </form>

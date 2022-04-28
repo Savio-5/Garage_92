@@ -16,7 +16,7 @@ if (strlen($_SESSION['adid'] == 0)) {
     $serviceby = "";
 
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit-service-completed'])) {
 
         $cid = $_GET['aticid'];
         $admrmk = $_POST['AdminRemark'];
@@ -29,6 +29,28 @@ if (strlen($_SESSION['adid'] == 0)) {
         $query = mysqli_query($conn, "update  tblservicerequest set AdminRemark='$admrmk',AdminStatus='$admsta', ServiceCharge='$sercharge',OtherCharge='$addcharge', PartsCharge='$partcharge', ServiceBy='$serviceby' where ID='$cid'");
         if ($query) {
             $msg = "Service has been completed.";
+
+            $total =  $sercharge + $addcharge + $partcharge;
+            $result = mysqli_query($conn, "select * from tblservicerequest join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.ID='$cid'");
+            $res_row = mysqli_fetch_array($result);
+
+            $subject = "Your Vehicle Servicing has been Completed";
+
+            $body = "Hi <br>Your Vehicle Service Number " . $res_row['ServiceNumber'] . " is Complete <br> Total amount due is Rs " . $total . "<br><br> Thanks GARAGE92 Team";
+
+
+            require('../includes/email.php');
+
+            $mail->FromName   = 'GARAGE92';
+            $mail->AddAddress($res_row['Email']);
+            $mail->Subject    =  $subject;
+            $mail->IsHTML(true);
+            $mail->Body       = $body;
+            if ($mail->Send()) {
+                echo "<script>alert('Email Sent');</script>";
+            } else {
+                echo "Mail Error - >" . $mail->ErrorInfo;
+            }
         } else {
             $msg = "Something Went Wrong. Please try again";
         }
@@ -146,7 +168,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                         <table class="table mb-0">
                                                             <?php if ($row['AdminRemark'] == "") { ?>
-                                                                <form name="submit" method="post" enctype="multipart/form-data">
+                                                                <form name="submit-service-completed" method="post" enctype="multipart/form-data">
 
                                                                     <tr>
                                                                         <th>Admin Remark :</th>
@@ -196,7 +218,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                                     </tr>
 
                                                                     <tr align="center">
-                                                                        <td colspan="2"><button type="submit" name="submit" class="btn btn-az-primary pd-x-20">Service Completed</button></td>
+                                                                        <td colspan="2"><button type="submit" name="submit-service-completed" class="btn btn-primary pd-20">Service Completed</button></td>
                                                                     </tr>
                                                                 </form>
                                                             <?php } else { ?>
@@ -234,6 +256,9 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                                 </table>
 
+                                                                
+
+
 
 
 
@@ -244,16 +269,27 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                         </table>
 
+                                                        
+
                                                     <?php } ?>
 
 
 
 
                                                 </div>
+
+                                                <div class="ml-auto">
+<a href="invoices.php?id=<?php echo $cid; ?>">
+                                                                    <td colspan="2"><input type="button" class="btn btn-primary pd-20" value="Generate Invoice" /></td>
+                                                                    </a>
+        
+                                                </div>
+                                                                    
                                             </div>
 
                                         </div>
                                         <!-- end row -->
+                                        
 
                                     </div> <!-- end card-box -->
                                 </div><!-- end col -->

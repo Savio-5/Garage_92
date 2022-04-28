@@ -1,62 +1,47 @@
+<?php 
+include('./header.php');
+?>
+<title>phpzag.com : Demo Razorpay Payment Gateway Integration in PHP</title>
+<?php include('./container.php');?>
+<div class="container">
+	<div class="row">
+	<h2>Example: Razorpay Payment Gateway Integration in PHP</h2>
+	<br><br><br>
 <?php
-
 require('config.php');
-require('razorpay-php/Razorpay.php');
+require('../vendor/autoload.php');
 session_start();
-
-// Create the Razorpay Order
-
 use Razorpay\Api\Api;
-
 $api = new Api($keyId, $keySecret);
-
-//
-// We create an razorpay order using orders api
-// Docs: https://docs.razorpay.com/docs/orders
-//
 $orderData = [
     'receipt'         => 3456,
-    'amount'          => 2000 * 100, // 2000 rupees in paise
-    'currency'        => 'INR',
-    'payment_capture' => 1 // auto capture
+    'amount'          => $_POST['amount'] * 100,
+    'currency'        => $_POST['currency'],
+    'payment_capture' => 1
 ];
-
 $razorpayOrder = $api->order->create($orderData);
-
 $razorpayOrderId = $razorpayOrder['id'];
-
 $_SESSION['razorpay_order_id'] = $razorpayOrderId;
-
 $displayAmount = $amount = $orderData['amount'];
-
-if ($displayCurrency !== 'INR')
-{
+if ($displayCurrency !== 'INR') {
     $url = "https://api.fixer.io/latest?symbols=$displayCurrency&base=INR";
     $exchange = json_decode(file_get_contents($url), true);
 
     $displayAmount = $exchange['rates'][$displayCurrency] * $amount / 100;
 }
-
-$checkout = 'automatic';
-
-if (isset($_GET['checkout']) and in_array($_GET['checkout'], ['automatic', 'manual'], true))
-{
-    $checkout = $_GET['checkout'];
-}
-
 $data = [
     "key"               => $keyId,
     "amount"            => $amount,
-    "name"              => "DJ Tiesto",
-    "description"       => "Tron Legacy",
-    "image"             => "https://s29.postimg.org/r6dj1g85z/daft_punk.jpg",
+    "name"              => $_POST['item_name'],
+    "description"       => $_POST['item_description'],
+    "image"             => "",
     "prefill"           => [
-    "name"              => "Daft Punk",
-    "email"             => "customer@merchant.com",
-    "contact"           => "9999999999",
+    "name"              => $_POST['cust_name'],
+    "email"             => $_POST['email'],
+    "contact"           => $_POST['contact'],
     ],
     "notes"             => [
-    "address"           => "Hello World",
+    "address"           => $_POST['address'],
     "merchant_order_id" => "12312321",
     ],
     "theme"             => [
@@ -73,4 +58,8 @@ if ($displayCurrency !== 'INR')
 
 $json = json_encode($data);
 
-require("checkout/{$checkout}.php");
+
+require("checkout/manual.php");
+?>
+</div>
+<?php include('./footer.php');?>

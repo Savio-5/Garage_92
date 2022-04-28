@@ -24,7 +24,7 @@
                             <a href="../index.php">Home</a>
                             <a href="../about.php">About Us</a>
                             <a href="../get-appointment.php">Service Booking</a>
-                            <a href="../contact.php">Contact Us</a>
+                            <!-- <a href="../contact.php">Contact Us</a> -->
                         </div>
                     </div>
              

@@ -3,10 +3,10 @@
 session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
-// if (isset($_SESSION["loggedina"]) && $_SESSION["loggedina"] === true) {
-//     header("location: index.php");
-//     exit;
-// }
+if (isset($_SESSION["adid"]) && $_SESSION["loggedin_admin"] === true) {
+    header("location: index.php");
+    exit;
+}
 
 // Include config file
 require "./includes/config_admin.php";
@@ -53,9 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (mysqli_stmt_num_rows($stmt) == 1) {
                     // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $adminname, $password);
-                    echo "1";
-                    if (mysqli_stmt_fetch($stmt)) {
-                        echo "2";
+                 if (mysqli_stmt_fetch($stmt)) {
                         if (password_verify($pass, $password)) {
                             // Password is correct, so start a new session
                             session_start();
@@ -70,15 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             header("location: index.php");
                         } else {
                             // Password is not valid, display a generic error message
-                            echo "Invalid username or password. 1";
+                            $msg = "Invalid username or password.";
                         }
                     }
                 } else {
                     // email doesn't exist, display a generic error message
-                    echo "Invalid username or password. 2";
+                    $msg = "Invalid username or password.";
                 }
             } else {
-                echo "Oops! Something went wrong. Please try again later.";
+                $msg = "Oops! Something went wrong. Please try again later.";
             }
 
             // Close statement
@@ -106,6 +104,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="bg-primary">
+<?php
+  if (!empty($msg)) {
+    echo '<div class="alert alert-danger">' . $msg . '</div>';
+  }
+  ?>
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>

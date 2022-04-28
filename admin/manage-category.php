@@ -10,7 +10,7 @@ if (strlen($_SESSION['adid'] == 0)) {
     header('location:logout.php');
 } else {
     //for Deleting Category
-    if ($_GET['id']) {
+    if (isset($_GET['id'])) {
         $eid = substr(base64_decode($_GET['id']), 0, -5);
         $query = mysqli_query($conn, "delete from tblcategory where ID='$eid'");
         if ($query) {
@@ -47,7 +47,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                     <div class="content-wrapper">
                         <div class="container-fluid">
 
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-12">
                                     <div class="card">
                                         <!-- <h4 class="m-t-0 header-title">Manage Vehicle Category</h4>

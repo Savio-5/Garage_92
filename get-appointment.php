@@ -3,31 +3,31 @@ session_start();
 
 require "./includes/config.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_SESSION['sid'])) {
-        if (isset($_POST['submit'])) {
-            $uid = $_SESSION['sid'];
-            $category = $_POST['category'];
-            $vehname = $_POST['vehiclename'];
-            $vehmodel = $_POST['vehilemodel'];
-            $vehbrand = $_POST['vehiclebrand'];
-            $vehrego = $_POST['vehicleregno'];
-            $vehservicedate = $_POST['servicedate'];
-            $vehservicetime = $_POST['servicetime'];
-            $deltype = $_POST['deltype'];
-            $pickupadd = $_POST['pickupadd'];
-            $sernumber = mt_rand(100000000, 999999999);
+if(!isset($_SESSION["sid"])){
+    header("location: login.php");
+}
 
-            $query = mysqli_query($conn, "insert into tblservicerequest(UserId,Category,ServiceNumber,VehicleName,VehicleModel,VehicleBrand,VehicleRegno,ServiceDate,ServiceTime,DeliveryType,PickupAddress) value('$uid','$category','$sernumber','$vehname','$vehmodel','$vehbrand','$vehrego','$vehservicedate','$vehservicetime','$deltype','$pickupadd')");
-            if ($query) {
-                echo "<script>alert('Data has been added successfully.');</script>";
-                echo "<script>window.location.href = get-appointment.php'</script>";
-            } else {
-                echo "<script>alert('Something went wrong.Please try again.');</script>";
-            }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['submit'])) {
+        $uid = $_SESSION['sid'];
+        $category = $_POST['category'];
+        $vehname = $_POST['vehiclename'];
+        $vehmodel = $_POST['vehilemodel'];
+        $vehbrand = $_POST['vehiclebrand'];
+        $vehrego = $_POST['vehicleregno'];
+        $vehservicedate = $_POST['servicedate'];
+        $vehservicetime = $_POST['servicetime'];
+        $deltype = $_POST['deltype'];
+        $pickupadd = $_POST['pickupadd'];
+        $sernumber = mt_rand(100000000, 999999999);
+
+        $query = mysqli_query($conn, "insert into tblservicerequest(UserId,Category,ServiceNumber,VehicleName,VehicleModel,VehicleBrand,VehicleRegno,ServiceDate,ServiceTime,DeliveryType,PickupAddress) value('$uid','$category','$sernumber','$vehname','$vehmodel','$vehbrand','$vehrego','$vehservicedate','$vehservicetime','$deltype','$pickupadd')");
+        if ($query) {
+            echo "<script>alert('Data has been added successfully.');</script>";
+            echo "<script>window.location.href = get-appointment.php'</script>";
+        } else {
+            echo "<script>alert('Something went wrong.Please try again.');</script>";
         }
-    } else {
-        header('location:login.php');
     }
 }
 // if (isset($_POST['book'])) {
@@ -105,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- <script src="lib/select2/js/select2.full.min.js"></script> -->
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -276,22 +277,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="modal-header">
                     <h5 class="modal-title">Fill the Service Request Form</h5>
                 </div>
-                <div class="modal-body" data-select2-id="11">
-                    <!-- <style>
-    #uni_modal .modal-footer{
-        display:none
-    }
-    span.select2-selection.select2-selection--single,span.select2-selection.select2-selection--multiple {
-    padding: 0.25rem 0.5rem;
-    min-height: calc(1.5em + 0.5rem + 2px);
-    height:auto !important;
-    max-height:calc(3.5em + 0.5rem + 2px);
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    border-radius: 0;
-}
-</style> -->
-                    <div class="container-fluid" data-select2-id="10">
+                <div class="modal-body">
+                    <div class="container-fluid">
                         <form class="form-horizontal" role="form" method="post" name="submit">
                             <!-- Start Page content -->
                             <!-- <div class="content mr-5 ml-5"> -->
@@ -338,7 +325,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Vehicle Registration Number</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" name="vehicleregno" id="vehicleregno" required="true">
+                                                            <input type="text" class="form-control" name="vehicleregno" id="vehicleregno" pattern="[A-Z]-[0-9]{2}-[0-9]{4}" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -354,6 +341,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                             <input type="time" class="form-control" name="servicetime" id="servicetime" required="true">
                                                         </div>
                                                     </div>
+
+
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Delivery Type</label>
@@ -406,22 +395,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- JavaScript Libraries -->
-                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-                    <script src="lib/easing/easing.min.js"></script>
-                    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-                    <script src="lib/waypoints/waypoints.min.js"></script>
-                    <script src="lib/counterup/counterup.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
 
-                    <!-- Contact Javascript File -->
-                    <script src="mail/jqBootstrapValidation.min.js"></script>
-                    <script src="mail/contact.js"></script>
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
 
-                    <!-- Template Javascript -->
-                    <script src="js/main.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>

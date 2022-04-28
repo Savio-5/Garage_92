@@ -47,7 +47,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                     <div class="content-wrapper">
                         <div class="container-fluid">
 
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-12">
                                     <div class="card">
                                         <!-- <h4 class="m-t-0 header-title"></h4>

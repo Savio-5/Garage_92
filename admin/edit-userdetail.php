@@ -9,7 +9,7 @@ $msg = "";
 if (strlen($_SESSION['adid'] == 0)) {
     header('location:logout.php');
 } else {
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit-edit-detail'])) {
         $sid = substr(base64_decode($_GET['udid']), 0, -5);
         $fname = $_POST['fullname'];
         $query = mysqli_query($conn, "update tbluser set FullName='$fname' where ID='$sid'");
@@ -63,7 +63,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                                                                                 echo $msg;
                                                                                                             }  ?> </p>
 
-                                                    <form class="form-horizontal" role="form" method="post" name="submit">
+                                                    <form class="form-horizontal" role="form" method="post" name="submit-edit-detail">
 
                                                         <?php
                                                         $sid = substr(base64_decode($_GET['udid']), 0, -5);
@@ -109,7 +109,7 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <p style="text-align: center;"> <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Update</button></p>
+                                                                <p style="text-align: center;"> <button type="submit" name="submit-edit-detail" class="btn btn-info btn-min-width mr-1 mb-1">Update</button></p>
                                                             </div>
                                                         </div>
                                                     </form>
