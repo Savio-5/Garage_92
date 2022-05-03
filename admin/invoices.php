@@ -68,20 +68,23 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                             <b>RECEIVER (BILL TO) INFORMATION</b><br>
                                                             <div class="form-group mt-1">
-                                                                <input type="text" name="receiver-name" id="receiver-name" class="form-control input-sm" placeholder="Enter Receiver Name" value="">
+                                                                <input type="text" name="receiver-name" id="receiver-name" class="form-control input-sm" placeholder="Enter Receiver Name" value=""  required>
                                                             </div>
                                                             <div class="form-group mt-1">
-                                                                <textarea name="invoice-description" id="invoice-description" class="form-control" placeholder="Invoice Description"></textarea>
+                                                                <textarea name="invoice-description" id="invoice-description" class="form-control" placeholder="Invoice Description"  required></textarea>
+                                                            </div>
+                                                            <div class="form-group mt-1">
+                                                                <input type="number" name="service_num" id="service_num" class="form-control input-sm" placeholder="Service Number" value=""  required>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <b>INVOICE DETAILS</b><br>
                                                             <div class="form-group mt-1">
-                                                                <input type="number" name="receiver_phone-no" id="receiver_phone-no" class="form-control input-sm number_only" pattern="[0-9]{10}" placeholder="Phone Number" value="">
+                                                                <input type="number" name="receiver_phone-no" id="receiver_phone-no" class="form-control input-sm number_only" pattern="[0-9]{10}" placeholder="Phone Number" value=""  required>
                                                             </div>
 
                                                             <div class="form-group mt-1">
-                                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control input-sm" placeholder="Receivers Email" value="">
+                                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control input-sm" placeholder="Receivers Email" value=""  required>
                                                             </div>
                                                             <div class="form-group mt-1">
                                                                 <input type="checkbox" name="draft-invoice" id="draft-invoice" value="1">
@@ -102,10 +105,10 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                             </tr>
                                                             <tr>
                                                                 <td><span id="sr_no">1</span></td>
-                                                                <td><input type="text" name="item_name" id="item_name" class="form-control input-sm"></td>
-                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm"></td>
-                                                                <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0"></td>
-                                                                <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value=""></td>
+                                                                <td><input type="text" name="item_name" id="item_name" class="form-control input-sm" required></td>
+                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm" required></td>
+                                                                <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0" required></td>
+                                                                <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value="" required></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -145,20 +148,20 @@ if (strlen($_SESSION['adid'] == 0)) {
 
                                                             <b>RECEIVER (BILL TO) INFORMATION</b><br>
                                                             <div class="form-group mt-1">
-                                                                <input type="text" name="receiver-name" id="receiver-name" class="form-control input-sm" placeholder="Enter Receiver Name" value="<?php echo $fname ; ?>">
+                                                                <input type="text" name="receiver-name" id="receiver-name" class="form-control input-sm" placeholder="Enter Receiver Name" value="<?php echo $fname ; ?>"  required>
                                                             </div>
                                                             <div class="form-group mt-1">
-                                                                <textarea name="invoice-description" id="invoice-description" class="form-control" placeholder="Invoice Description" value=""><?php echo $text ; ?></textarea>
+                                                                <textarea name="invoice-description" id="invoice-description" class="form-control" placeholder="Invoice Description" value="" required><?php echo $text ; ?></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <b>INVOICE DETAILS</b><br>
                                                             <div class="form-group mt-1">
-                                                                <input type="number" name="receiver_phone-no" id="receiver_phone-no" class="form-control input-sm number_only" pattern="[0-9]{10}" placeholder="Phone Number" value="<?php echo $mno; ?>">
+                                                                <input type="number" name="receiver_phone-no" id="receiver_phone-no" class="form-control input-sm number_only" pattern="[0-9]{10}" placeholder="Phone Number" value="<?php echo $mno; ?>"  required>
                                                             </div>
 
                                                             <div class="form-group mt-1">
-                                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control input-sm" placeholder="Receivers Email" value="<?php echo $email; ?>">
+                                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control input-sm" placeholder="Receivers Email" value="<?php echo $email; ?>"  required>
                                                             </div>
                                                             <div class="form-group mt-1">
                                                                 <input type="checkbox" name="draft-invoice" id="draft-invoice" value="1">
@@ -180,9 +183,9 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                             <tr>
                                                                 <td><span id="sr_no">1</span></td>
                                                                 <td><input type="text" name="item_name" id="item_name" class="form-control input-sm"></td>
-                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm"></td>
-                                                                <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0"></td>
-                                                                <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value="<?php echo $total; ?>"></td>
+                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm"  required></td>
+                                                                <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0"  required></td>
+                                                                <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value="<?php echo $total; ?>"  required></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -194,6 +197,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                             <tr>
                                                 <td colspan="2" align="center">
                                                     <input type="hidden" name="total_item" id="total_item" value="1">
+                                                    <input type="hidden" name="service_num" id="service_num" value="<?php echo $service_num ?>">
                                                     <input type="submit" name="create_invoice" id="create_invoice" class="btn btn-success" value="Create">
                                                 </td>
                                             </tr>

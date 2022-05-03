@@ -47,4 +47,7 @@ else
              <p>{$error}</p>";
 }
 
-echo $html;
+// $payinfo = $api->order->fetch($_POST['razorpay_payment_id']);
+$payinfo = $api->order->fetch($_SESSION['razorpay_order_id']);
+
+echo var_dump($payinfo['amount_due']);

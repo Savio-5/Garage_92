@@ -77,7 +77,7 @@ include('includes/config.php');
                 <div class="owl-carousel">
                     <div class="carousel-item">
                         <div class="carousel-img">
-                            <img src="img/carousel-4.jpg" alt="Image">
+                            <img src="img/car1.jpg" alt="Image">
                         </div>
                         <div class="carousel-text">
                             <h3>Car Services</h3>
@@ -87,7 +87,7 @@ include('includes/config.php');
                     </div>
                     <div class="carousel-item">
                         <div class="carousel-img">
-                            <img src="img/carousel-6.jpg" alt="Image">
+                            <img src="img/car2.jpg" alt="Image">
                         </div>
                         <div class="carousel-text">
                             <h3>Car Services</h3>
@@ -97,7 +97,7 @@ include('includes/config.php');
                     </div>
                     <div class="carousel-item">
                         <div class="carousel-img">
-                            <img src="img/carousel-5.jpeg" alt="Image">
+                            <img src="img/car3.jpg" alt="Image">
                         </div>
                         <div class="carousel-text">
                             <h3>Car Services</h3>
@@ -112,13 +112,14 @@ include('includes/config.php');
         
         
 	</body>
+    
         <!-- About Start -->
         <div class="about">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="about-img">
-                            <img src="img/about.jpg" alt="Image">
+                            <img src="img/car5.jpg" alt="Image">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -141,24 +142,54 @@ include('includes/config.php');
         </div>
         <!-- About End -->
 
+        <!-- <video width="1700" height="240"  muted autoplay>
+  <source src="img/car.mp4" type="video/mp4"> -->
 
+</video>
         <!-- Service Start -->
         <div class="service">
             <div class="container">
                 <div class="section-header text-center">
-                    <p>What We Do?</p>
-                    <h2>Premium car Services</h2>
+                    <p>We provide worlds best vehicle servivce</p>
+                    <h2>What we do?</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="service-item">
-                            <i class="flaticon-car-service-2"></i>
-                            <h3>Vehicle Servicing</h3>
+                            <i class="flaticon-car-wash-1"></i>
+                            <h3>Manual Transmission Fluid</h3>
                         </div>
                     </div>
-                   
-                    
-                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-item">
+                            <i class="flaticon-car-wash"></i>
+                            <h3>spark plugs Replacement</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-item">
+                            <i class="flaticon-vacuum-cleaner"></i>
+                            <h3>Vacuum cleaning</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-item">
+                            <i class="flaticon-seat"></i>
+                            <h3>Seat cover Inspection,dust removal </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-item">
+                            <i class="flaticon-car-service"></i>
+                            <h3>Grease and lubricate components</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-item">
+                            <i class="flaticon-car-service-2"></i>
+                            <h3>Check Brake pads/Liners, Brake discs/Drums</h3>
+                        </div>
+                    </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="service-item">
                             <i class="flaticon-car-wash"></i>
@@ -170,6 +201,10 @@ include('includes/config.php');
                             <i class="flaticon-brush-1"></i>
                             <h3>Brake Reparing</h3>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
                         <div class="section-header text-center">
                     <p>and many more</p>
                    
@@ -248,4 +283,3 @@ include('includes/config.php');
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>
-

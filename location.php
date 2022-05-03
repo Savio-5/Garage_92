@@ -39,7 +39,7 @@ include('includes/config.php');
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2>Towing services</h2>
+                        <h2>Our Garage location</h2>
                     </div>
                     <div class="col-12">
                         <a href="index.php">Home</a>
@@ -57,21 +57,13 @@ include('includes/config.php');
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-header text-left">
-                            <p>Emergency towing points</p>
-                            <h2>Towing trucks contact and location</h2>
+                            <p>you can visit our Garage</p>
+                            <h2>our location</h2>
                         </div>
                         <div class="row">
                               
-                              <div class="col-md-6">
-                                  <div class="location-item">
-                                      <i class="fa fa-map-marker-alt"></i>
-                                      <div class="location-text">
-                                  <h3>Garage 92 Santa Cruz Branch</h3>
-                      <p>Cabesa Ward, St Cruz, Goa 403202</p>
-                      <p><strong>Call:</strong>+91 9511864023</p>
-                                      </div>
-                                  </div>
-                              </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15381.614704587597!2d73.83927712135156!3d15.462703828128179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfbf5139b55ca5%3A0x9562971f589c401c!2sCabesa%20Ward%2C%20St%20Cruz%2C%20Goa%20403202!5e0!3m2!1sen!2sin!4v1651076213527!5m2!1sen!2sin" width="1620" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           
                 
                         
                           </div>

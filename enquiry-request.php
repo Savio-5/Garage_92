@@ -104,9 +104,7 @@ if (strlen($_SESSION['sid'] == 0)) {
 
                                     </form>
 
-                                    <div class="col-12">
-                                                <p style="text-align: right; text-decoration: none; color: #ffff"> <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1"><a href="enquiry-history.php">Submit</a></button></p>
-                                            </div>
+                                    
                                 </div>
                             </div>
 

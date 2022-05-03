@@ -3,6 +3,10 @@
 session_start();
 
 require './includes/config_admin.php';
+require '../razorpay/config.php';
+require '../razorpay/razorpay-php/Razorpay.php';
+
+use Razorpay\Api\Api;
 
 $msg = "";
 if (strlen($_SESSION['adid'] == 0)) {
@@ -40,60 +44,102 @@ if (strlen($_SESSION['adid'] == 0)) {
                             <div class="container-fluid">
                                 <!-- Start Page content -->
 
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="card-box card-header">
-                                                    <h4 class="m-t-0 "></h4>
-                                                    <i class="fas fa-table me-1"></i>
-                                                    Complete Services
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="card-body">
-                                                                <table class="table datatablesSimple">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>S.NO</th>
-                                                                            <th>Service number</th>
-                                                                            <th>Vehicle Category</th>
-                                                                            <th>Full Name</th>
-                                                                            <th>Mobile Number</th>
-                                                                            <th>Email</th>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card-box card-header">
+                                            <h4 class="m-t-0 "></h4>
+                                            <i class="fas fa-table me-1"></i>
+                                            Complete Services
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="card-body">
+                                                        <table class="table datatablesSimple">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>S.NO</th>
+                                                                    <th>Service number</th>
+                                                                    <th>Vehicle Category</th>
+                                                                    <th>Full Name</th>
+                                                                    <th>Mobile Number</th>
+                                                                    <th>Email</th>
+
+                                                                    <th>Invoice ID</th>
+                                                                    <th>Status</th>
 
 
-                                                                            <th>Action</th>
-                                                                        </tr>
-                                                                    </thead>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <?php
+                                                            $ret = mysqli_query($conn, "select tblservicerequest.ServiceNumber,tblservicerequest.Category, tblservicerequest.invoice_id, tblservicerequest.Pay_Status,tblservicerequest.ID as apid, tbluser.FullName,tbluser.MobileNo,tbluser.Email from  tblservicerequest inner join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.AdminStatus ='3'");
+                                                            $cnt = 1;
+                                                            while ($row = mysqli_fetch_array($ret)) {
+
+                                                            ?>
+
+                                                                <tr>
+
                                                                     <?php
-                                                                    $ret = mysqli_query($conn, "select tblservicerequest.ServiceNumber,tblservicerequest.Category,tblservicerequest.ID as apid, tbluser.FullName,tbluser.MobileNo,tbluser.Email from  tblservicerequest inner join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.AdminStatus ='3'");
-                                                                    $cnt = 1;
-                                                                    while ($row = mysqli_fetch_array($ret)) {
+                                                                    $api = new Api($keyId, $keySecret);
 
+
+
+                                                                    // $invoice_res = mysqli_query($conn, "select tblservicerequest.ServiceNumber,tblservicerequest.Category, tblservicerequest.invoice_id, tblservicerequest.Pay_Status,tblservicerequest.ID as apid, tbluser.FullName,tbluser.MobileNo,tbluser.Email from  tblservicerequest inner join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.AdminStatus ='3'");
+                                                                    // $row1 = mysqli_fetch_array($invoice_res);
+
+                                                                    if($row['invoice_id'] !== null){
+                                                                        $invoiceId = $row['invoice_id'];
+                                                                        $result = $api->invoice->fetch($invoiceId);
+                                                                        if($result['amount_due'] == 0){
+                                                                            $update = mysqli_query($conn, "UPDATE tblservicerequest SET Pay_Status = 'Paid' WHERE invoice_id='$invoiceId'");
+                                                                        }
+                                                                    }
+
+                                                                    // if ($row['invoice_id'] !== null) {
+                                                                    //     $invoiceId = $row['invoice_id'];
+                                                                    //     $result = $api->invoice->fetch($invoiceId);
+                                                                    //     if ($row['Pay_Status'] !== 'Payed') {
+
+                                                                    //         $result1 = mysqli_query($conn, "select tblservicerequest.ServiceNumber,tblservicerequest.Category, tblservicerequest.invoice_id, tblservicerequest.Pay_Status,tblservicerequest.ID as apid, tbluser.FullName,tbluser.MobileNo,tbluser.Email from  tblservicerequest inner join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.AdminStatus ='3'");
+                                                                    //         $row1 = mysqli_fetch_array($invoice_res);
+
+                                                                    //         $res1 = $result['amount_due'];
+
+                                                                    //         if ($res1 == 0) {
+                                                                    //             $update = mysqli_query($conn, "UPDATE tblservicerequest SET Pay_Status = 'Payed' WHERE invoice_id='$invoiceId'");
+                                                                    //         }
+                                                                    //     }
+                                                                    // }
                                                                     ?>
 
-                                                                        <tr>
-                                                                            <td><?php echo $cnt; ?></td>
-                                                                            <td><?php echo $row['ServiceNumber']; ?></td>
-                                                                            <td><?php echo $row['Category']; ?></td>
 
-                                                                            <td><?php echo $row['FullName']; ?></td>
-                                                                            <td><?php echo $row['MobileNo']; ?></td>
-                                                                            <td><?php echo $row['Email']; ?></td>
+                                                                    <td><?php echo $cnt; ?></td>
+                                                                    <td><?php echo $row['ServiceNumber']; ?></td>
+                                                                    <td><?php echo $row['Category']; ?></td>
+
+                                                                    <td><?php echo $row['FullName']; ?></td>
+                                                                    <td><?php echo $row['MobileNo']; ?></td>
+                                                                    <td><?php echo $row['Email']; ?></td>
+                                                                    <td><?php echo $row['invoice_id']; ?></td>
+                                                                    <td><?php echo $row['Pay_Status']; ?></td>
 
 
 
-                                                                            <td><a href="view-service.php?aticid=<?php echo $row['apid']; ?>">View Details</a></td>
-                                                                        </tr>
-                                                                    <?php
-                                                                        $cnt = $cnt + 1;
-                                                                    } ?>
 
-                                                                </table>
-                                                            </div>
-                                                        </div>
+
+                                                                    <td><a href="view-service.php?aticid=<?php echo $row['apid']; ?>">View Details</a></td>
+                                                                </tr>
+                                                            <?php
+                                                                $cnt = $cnt + 1;
+                                                            } ?>
+
+                                                        </table>
                                                     </div>
-                                                </div> <!-- end card-box -->
-                                            </div><!-- end col -->
-                                        </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end card-box -->
+                                    </div><!-- end col -->
+                                </div>
                             </div>
                         </section>
                     </div>

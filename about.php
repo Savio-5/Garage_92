@@ -1,5 +1,6 @@
 <?php //error_reporting(0);
 include('includes/config.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ include('includes/config.php');
 <body>
     <?php include_once('includes/header.php'); ?>
     <!-- Page Header Start -->
-    <div class="page-header">
+    <!-- <div class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -39,7 +40,7 @@ include('includes/config.php');
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Page Header End -->
 
 
@@ -49,7 +50,7 @@ include('includes/config.php');
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-img">
-                        <img src="img/about.jpg" alt="Image">
+                        <img src="img/car5.jpg" alt="Image">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -63,7 +64,7 @@ include('includes/config.php');
                         </p>
                         <div style="text-align: justify;"><span style="color: rgb(0, 0, 0); font-family: Georgia; font-size: 15px;">Welcome to Garage 92, your number one source for all Vehicle services. We're dedicated to giving you the very best of services, with a focus on dedication,on time services, and expertise mechanics,affortable price Founded in 2015 by Arif, Garage 92 has come a long way from its beginnings in a Cabesa Ward, St Cruz, Goa 4030025.</span></div>
                         <div style="text-align: justify;"><span style="color: rgb(0, 0, 0); font-family: Georgia; font-size: 15px;"><br></span></div>
-                        <div style="text-align: justify;"><span style="color: rgb(0, 0, 0); font-family: Georgia; font-size: 15px;">When Arif first started out, his passion for doing car service booking from remote location without standing on a queue drove him to do intense research, quit her day job, and gave him the impetus to turn hard work and inspiration into to a booming online store. We now serve customers all over goa, maharastra,kerela, and are thrilled to be a part of the doing service booking in remote location wing of the car srevice industry. We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
+                        <div style="text-align: justify;"><span style="color: rgb(0, 0, 0); font-family: Georgia; font-size: 15px;">When Arif first started out, his passion for doing car service booking from remote location without standing on a queue drove him to do intense research, quit him day job, and gave him the impetus to turn hard work and inspiration into to a booming online store. We now serve customers all over goa, maharastra,kerela, and are thrilled to be a part of the doing service booking in remote location wing of the car srevice industry. We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
 <br>Sincerely,<br>
 Arif Khalifa</span><br></div>
                         <div></div>
@@ -77,6 +78,9 @@ Arif Khalifa</span><br></div>
             </div>
         </div>
     </div>
+    
+</body>
+</html>
     <!-- About End -->
 
 

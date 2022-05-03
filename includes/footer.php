@@ -10,11 +10,14 @@
                             <p><i class="fa fa-envelope"></i><a style="text-decoration: none; color: white;" href="mailto:garage.9ne2@gmail.com">garage.9ne2@gmail.com</a></p>
 
                                                     <div class="footer-social">
-                                <a class="btn" href=""><i class="fab fa-twitter"></i></a>
+                                                    <a class="btn" href="https://www.facebook.com/garage92goa/"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn" href="https://www.youtube.com/channel/UCpxClZevvllxb3tPS7zBr2w/"><i class="fab fa-youtube"></i></a>
+                                <a class="btn" href="https://www.instagram.com/garage92.goa/"><i class="fab fa-instagram"></i></a>
+                                <!-- <a class="btn" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn" href=""><i class="fab fa-youtube"></i></a>
                                 <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a> -->
                             </div>
                         </div>
                     </div>

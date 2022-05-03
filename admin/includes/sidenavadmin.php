@@ -10,7 +10,7 @@
                     </a>
 
                     <a class="nav-link collapsed" href="javascript: void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
-                        <div class="sb-nav-link-icon"><i class="fal fa-car-mechanic"></i></div>
+                        <div class="sb-nav-link-icon"></div>
                         Mechanics
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
@@ -27,7 +27,7 @@
 
 
                     <a class="nav-link collapsed" href="javascript: void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file"></i></div>
+                        <div class="sb-nav-link-icon"></div>
                         Vehicle Category
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
@@ -50,7 +50,7 @@
 
 
                     <a class="nav-link collapsed" href="javascript: void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages3" aria-expanded="false" aria-controls="collapsePages3">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file"></i></div>
+                        <div class="sb-nav-link-icon"></div>
                         Service Request
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
@@ -67,7 +67,7 @@
 
 
                     <a class="nav-link collapsed" href="javascript: void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages4" aria-expanded="false" aria-controls="collapsePages4">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file"></i></div>
+                        <div class="sb-nav-link-icon"></i></div>
                         Servicing
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
@@ -84,11 +84,11 @@
 
 
                     <a class="nav-link" href="invoices.php">
-                        <div class="sb-nav-link-icon"><i class="fa-regular fa-file-invoice"></i></div>
+                        <div class="sb-nav-link-icon"></div>
                         Generate Invoice
                     </a>
                     <a class="nav-link collapsed" href="javascript: void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages5" aria-expanded="false" aria-controls="collapsePages5">
-                        <div class="sb-nav-link-icon"><i class="fa fa-list-ul"></i></div>
+                        <div class="sb-nav-link-icon"></div>
                         Customer Enquiry
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>

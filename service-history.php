@@ -30,78 +30,106 @@ if (!isset($_SESSION['sid'])) {
 
         <!-- Template Stylesheet -->
         <link href="./css/style.css" rel="stylesheet">
+        <style>
+.mycssquote{
+	color: red;
+   
+}
+.mygren{
+  color: green;
+}
+</style>
     </head>
 
     <body>
 
         <?php include('./includes/header.php') ?>
-            <!-- Start Page content -->
-            <div class="content  ml-auto mr-auto">
-                <div class="container-fluid">
+        <!-- Start Page content -->
+        <div class="content  ml-auto mr-auto">
+            <div class="container-fluid">
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card-box mt-5">
-                                <h4 class="m-t-0 header-title">Service History</h4>
-                                <p class="text-muted m-b-30 font-14">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box mt-5">
+                            <h4 class="m-t-0 header-title">Service History</h4>
+                            <p class="text-muted m-b-30 font-14">
 
-                                </p>
+                            </p>
 
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="p-20">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="p-20">
 
-                                            <table class="table table-bordered mg-b-0">
-                                                <thead>
+                                        <table class="table table-bordered mg-b-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>S.NO</th>
+                                                    <th>Category</th>
+                                                    <th>Vehicle Name</th>
+                                                    <th>Service Request Date</th>
+                                                    <th>Service status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <?php
+                                            $tid = $_SESSION['sid'];
+                                            $rno = mt_rand(1000, 9999);
+                                            $ret = mysqli_query($conn, "select * from  tblservicerequest where UserId=$tid");
+                                            $cnt = 1;
+                                            while ($row = mysqli_fetch_array($ret)) {
+
+                                            ?>
+                                                <tbody>
                                                     <tr>
-                                                        <th>S.NO</th>
-                                                        <th>Category</th>
-                                                        <th>Vehicle Name</th>
-                                                        <th>Service Request Date</th>
-                                                        <th>Action</th>
+                                                        <td><?php echo $cnt; ?></td>
+                                                        <td><?php echo $row['Category']; ?></td>
+                                                        <td><?php echo $row['VehicleName']; ?></td>
+                                                        <td><?php echo $row['ServicerequestDate']; ?></td>
+                                                        <td><?php
+                                                            if ($row['AdminStatus'] == "3") {
+                                                                echo "<p class=\"mygren\">completed</p>";
+                                                            } else {
+                                                                if ($row['AdminStatus'] == "1") {
+                                                                    echo "<p class=\"mygren\">selected</p>";
+                                                                } else {
+                                                                    if ($row['AdminStatus'] == "2") {
+                                                                        echo "<p class=\"mycssquote\">rejected</p>";
+                                                                    } else {
+
+                                                                        if ($row['AdminStatus'] == "") {
+                                                                            echo "<p class=\"mycssquote\">pending</p>";
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            ?></td>
+
+                                                        <td><a href="service-view.php?srid=<?php echo base64_encode($row['ID'] . $rno); ?>">View Detail</a>
                                                     </tr>
-                                                </thead>
                                                 <?php
-                                                $tid = $_SESSION['sid'];
-                                                $rno = mt_rand(1000, 9999);
-                                                $ret = mysqli_query($conn, "select * from  tblservicerequest where UserId=$tid");
-                                                $cnt = 1;
-                                                while ($row = mysqli_fetch_array($ret)) {
+                                                $cnt = $cnt + 1;
+                                            } ?>
 
-                                                ?>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><?php echo $cnt; ?></td>
-                                                            <td><?php echo $row['Category']; ?></td>
-                                                            <td><?php echo $row['VehicleName']; ?></td>
-                                                            <td><?php echo $row['ServicerequestDate']; ?></td>
-
-                                                            <td><a href="service-view.php?srid=<?php echo base64_encode($row['ID'] . $rno); ?>">View Detail</a>
-                                                        </tr>
-                                                    <?php
-                                                    $cnt = $cnt + 1;
-                                                } ?>
-
-                                                    </tbody>
-                                            </table>
+                                                </tbody>
+                                        </table>
 
 
 
-                                        </div>
+                                    </div>
 
 
 
-                                        <!-- end row -->
+                                    <!-- end row -->
 
-                                    </div> <!-- end card-box -->
-                                </div><!-- end col -->
-                            </div>
+                                </div> <!-- end card-box -->
+                            </div><!-- end col -->
+                        </div>
 
-                        </div> <!-- container -->
+                    </div> <!-- container -->
 
-                    </div> <!-- content -->
-                </div>
+                </div> <!-- content -->
             </div>
+        </div>
 
         <?php include('./includes/footer.php') ?>
 

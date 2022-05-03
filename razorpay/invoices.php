@@ -48,6 +48,27 @@ if(isset($_POST['draft-invoice'])){
   }
 }
 
+$sernum = $_POST['service_num'];
+
+
 $result = $api->invoice->create($invoice);
 
+$res =  $result['id'];
+
 // echo var_dump($result);
+
+require('../includes/config.php');
+
+// $res = mysqli_query($conn, "select * from tblservicerequest join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.ServiceNumber='$sernum'");
+// $row = mysqli_fetch_array($res);
+
+$res = mysqli_query($conn, "UPDATE tblservicerequest
+SET invoice_id = '$res'
+WHERE ServiceNumber='$sernum'");
+
+
+// $row = mysqli_fetch_array($res);
+
+
+echo var_dump($result);
+// echo $res;

@@ -30,58 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-// if (isset($_POST['book'])) {
-//     $ptype = $_POST['packagetype'];
-//     $wpoint = $_POST['washingpoint'];
-//     $fname = $_POST['fname'];
-//     $mobile = $_POST['contactno'];
-//     $date = $_POST['washdate'];
-//     $time = $_POST['washtime'];
-//     $message = $_POST['message'];
-//     $status = 'New';
-//     $bno = mt_rand(100000000, 999999999);
-
-//     $sql = "INSERT INTO tblcarwashbooking(bookingId,packageType,carWashPoint,fullName,mobileNumber,washDate,washTime,message,status) VALUES(?,?,?,?,?,?,?,?,?)";
-
-//     $stmt = mysqli_prepare($conn, $sql);
-
-//     mysqli_stmt_bind_param($stmt, "isisissss", $bno, $ptype, $wpoint, $fname, $mobile, $date, $time, $message, $status);
-
-//     mysqli_stmt_execute($stmt);
-
-
-//     if (mysqli_stmt_insert_id($stmt)) {
-
-//         echo '<script>alert("Your booking done successfully. Booking number is "+"' . $bno . '")</script>';
-//         echo "<script>window.location.href ='washing-plans.php'</script>";
-//     } else {
-//         echo "<script>alert('Something went wrong. Please try again.');</script>";
-//     }
-// }
-
-
-// if (isset($_POST['submit'])) {
-//     $uid = $_SESSION['sid'];
-//     $category = $_POST['category'];
-//     $vehname = $_POST['vehiclename'];
-//     $vehmodel = $_POST['vehilemodel'];
-//     $vehbrand = $_POST['vehiclebrand'];
-//     $vehrego = $_POST['vehicleregno'];
-//     $vehservicedate = $_POST['servicedate'];
-//     $vehservicetime = $_POST['servicetime'];
-//     $deltype = $_POST['deltype'];
-//     $pickupadd = $_POST['pickupadd'];
-//     $sernumber = mt_rand(100000000, 999999999);
-
-//     $query = mysqli_query($con, "insert into tblservicerequest(UserId,Category,ServiceNumber,VehicleName,VehicleModel,VehicleBrand,VehicleRegno,ServiceDate,ServiceTime,DeliveryType,PickupAddress) value('$uid','$category','$sernumber','$vehname','$vehmodel','$vehbrand','$vehrego','$vehservicedate','$vehservicetime','$deltype','$pickupadd')");
-//     if ($query) {
-//         echo "<script>alert('Data has been added successfully.');</script>";
-//         echo "<script>window.location.href ='service-request.php'</script>";
-//     } else {
-//         echo "<script>alert('Something went wrong.Please try again.');</script>";
-//     }
-// }
-
 ?>
 
 <!DOCTYPE html>
@@ -126,6 +74,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         });
     </script>
+    <script language="Javascript" type="text/javascript">    
+    
+    function allowOnlyLetters(e, t)   
+    {    
+       if (window.event)    
+       {    
+          var charCode = window.event.keyCode;    
+       }    
+       else if (e)   
+       {    
+          var charCode = e.which;    
+       }    
+       else { return true; }    
+       if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))    
+           return true;    
+       else  
+       {    
+          alert("Please enter only alphabets");    
+          return false;    
+       }           
+    }      
+    </script> 
 </head>
 
 <body>
@@ -216,56 +186,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php include_once('includes/footer.php'); ?>
 
-    <!--Model1-->
-
-    <!-- <div class="modal fade" id="myModal1" role="dialog" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog"> -->
-
-    <!-- Modal content-->
-    <!-- <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Service Booking</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="post">
-                        <p>
-                            <input type="text" name="packagetype" required="" class="form-control" value="BASIC SERVICING"> -->
-    <!-- <select name="packagetype" required="" class="form-control">
-                                <option value="">Package Type</option>
-                                <option value="1" default>BASIC SERVICING</option>
-                                <option value="2">PREMIUM CLEANING ($20.99)</option>
-                            </select> -->
-
-    <!-- </p> -->
-    <!-- <p>
-                            <select name="washingpoint" required="" class="form-control">
-                                <option value="">Select Washing Point</option>
-
-                                <option value="1">XYZ Car Washing Point (ABC Street New Delhi 1110001)</option>
-
-                                <option value="2">ABC Car Washing Point (A3263 Sector 1- Noida 201301)</option>
-
-                                <option value="3"> Matrix Car washing Point (H911 Indira Puram Ghaziabad 201017 UP)</option>
-                            </select>
-                        </p> -->
-    <!-- <p><input type="text" name="fname" class="form-control" required="" placeholder="Full Name"></p>
-                        <p><input type="text" name="contactno" class="form-control" pattern="[0-9]{10}" title="10 numeric characters only" required="" placeholder="Mobile No."></p>
-                        <p>Service Date <br><input type="date" name="servicedate" required="" class="form-control"></p> -->
-    <!-- <p>Wash Time <br><input type="time" name="washtime" required="" class="form-control"></p> -->
-    <!-- <p><textarea name="message" class="form-control" placeholder="Message if any"></textarea></p>
-                        <input type="hidden" name="email" value="<?php //$_SESSION['email'] 
-                                                                    ?>">
-                        <p><input type="submit" class="btn btn-custom" name="book" value="Book Now"></p>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div> -->
-
 
     <!-- Model2 -->
 
@@ -279,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <form class="form-horizontal" role="form" method="post" name="submit">
+                    <form class="form-horizontal" role="form" method="post" name="submit">
                             <!-- Start Page content -->
                             <!-- <div class="content mr-5 ml-5"> -->
 
@@ -306,26 +226,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label" for="example-email">Vehicle Name</label>
                                                         <div class="col-10">
-                                                            <input type="text" id="vehiclename" name="vehiclename" class="form-control" placeholder="Vehicle Name" required="true">
+                                                            <input type="text" id="vehiclename" name="vehiclename" class="form-control" placeholder="Vehicle Name"  onkeypress="return allowOnlyLetters(event,this);" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Vehicle Model</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" name="vehilemodel" id="vehilemodel" required="true">
+                                                            <input type="text" class="form-control" name="vehilemodel" id="vehilemodel" pattern="[0-9]{4}" placeholder="Year" required="true">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Vehicle Brand</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Brand" name="vehiclebrand" id="vehiclebrand" required="true">
+                                                            <input type="text" class="form-control" placeholder="Brand" name="vehiclebrand" id="vehiclebrand"  onkeypress="return allowOnlyLetters(event,this);" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Vehicle Registration Number</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" name="vehicleregno" id="vehicleregno" pattern="[A-Z]-[0-9]{2}-[0-9]{4}" required="true">
+                                                            <input type="text" class="form-control" name="vehicleregno" id="vehicleregno" pattern="[A-Za-z]{2}-[0-9]{2}-[0-9]{4}" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -366,7 +286,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                         <div class="checkbox checkbox-custom">
                                                             <input id="remember" type="checkbox" checked="true">
                                                             <label for="remember">
-                                                                I accept <a href="terms-conditions.php" class="text-custom" target="_blank">Terms and Conditions</a>
+                                                                I accept <a href="#" class="text-custom" target="_blank">Terms and Conditions</a>
                                                             </label>
                                                         </div>
 
@@ -418,3 +338,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+
+

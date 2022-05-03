@@ -67,12 +67,16 @@
                             <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="about.php" class="nav-item nav-link">About</a>
                             
-                            <a href="location.php" class="nav-item nav-link">Emergency towing</a>
+                            <a href="location.php" class="nav-item nav-link">Location</a>
                             <?php
                         if (isset($_SESSION['sid'])) {
                         ?><a href="get-appointment.php" class="nav-item nav-link">Get Appointment</a>
                         <a href="service-history.php" class="nav-item nav-link">Service History</a>
                         <a href="enquiry-request.php" class="nav-item nav-link">Enquiry</a>
+                        <a href="enquiry-history.php" class="nav-item nav-link">Enquiry History</a>
+                        <!-- <div class="col-12">
+                                                <p style="text-align: right; text-decoration: none; color: #ffff"> <button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1"><a href="enquiry-history.php">Enquire History</a></button></p>
+                                            </div> -->
                         
                             <!-- <a href="contact.php" class="nav-item nav-link">Contact us</a> -->
                             <?php } ?>

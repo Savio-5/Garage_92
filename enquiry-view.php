@@ -47,7 +47,7 @@ if (strlen($_SESSION['sid'] == 0)) {
     <div class="content">
         <div class="container-fluid">
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-12">
                     <div class="card-box">
                         <h4 class="m-t-0 header-title">Enquiry History View</h4>
