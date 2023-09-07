@@ -24,7 +24,8 @@ if (strlen($_SESSION['adid'] == 0)) {
         $sercharge = $_POST['servicecharge'];
         $addcharge = $_POST['addcharge'];
         $partcharge = $_POST['partcharge'];
-        $serviceby = $_POST['serper'];
+        $serviceby = implode(" ,",$_POST['serper']);
+        // $serviceby = implode(" ,",$serviceby_);
 
         $query = mysqli_query($conn, "update  tblservicerequest set AdminRemark='$admrmk',AdminStatus='$admsta', ServiceCharge='$sercharge',OtherCharge='$addcharge', PartsCharge='$partcharge', ServiceBy='$serviceby' where ID='$cid'");
         if ($query) {
@@ -179,14 +180,12 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                                     <tr>
                                                                         <th>Service By :</th>
                                                                         <td>
-                                                                            <select name='serper' id="serper" class="form-control">
-                                                                                <option value="">Service By</option>
-                                                                                <?php $query = mysqli_query($conn, "select * from tblmechanics");
+                                                                            
+                                                                            <?php $query = mysqli_query($conn, "select * from tblmechanics");
                                                                                 while ($row = mysqli_fetch_array($query)) {
                                                                                 ?>
-                                                                                    <option value="<?php echo $row['FullName']; ?>"><?php echo $row['FullName']; ?></option>
+                                                                                    <input type="checkbox" value="<?php echo $row['FullName']; ?>" name="serper[]"><?php echo $row['FullName']; ?></input>
                                                                                 <?php } ?>
-                                                                            </select>
                                                                     </tr>
 
                                                                     <tr>

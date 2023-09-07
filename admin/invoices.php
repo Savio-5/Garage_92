@@ -73,9 +73,9 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                             <div class="form-group mt-1">
                                                                 <textarea name="invoice-description" id="invoice-description" class="form-control" placeholder="Invoice Description"  required></textarea>
                                                             </div>
-                                                            <div class="form-group mt-1">
+                                                            <!-- <div class="form-group mt-1">
                                                                 <input type="number" name="service_num" id="service_num" class="form-control input-sm" placeholder="Service Number" value=""  required>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                         <div class="col-md-4">
                                                             <b>INVOICE DETAILS</b><br>
@@ -97,8 +97,8 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                         <tbody>
                                                             <tr>
                                                                 <th width="5%">S/N.</th>
-                                                                <th width="20%">Item Name</th>
                                                                 <th width="20%">Description</th>
+                                                                <th width="20%">Sub-Description</th>
                                                                 <th width="5%">Quantity</th>
                                                                 <th width="12.5%" rowspan="1">Amount</th>
                                                                 <th width="3%" rowspan="2"></th>
@@ -106,7 +106,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                             <tr>
                                                                 <td><span id="sr_no">1</span></td>
                                                                 <td><input type="text" name="item_name" id="item_name" class="form-control input-sm" required></td>
-                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm" required></td>
+                                                                <td><input type="text" name="item_description" id="item_description" placeholder="Optional" data-srno="1" class="form-control input-sm"></td>
                                                                 <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0" required></td>
                                                                 <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value="" required></td>
                                                             </tr>
@@ -174,8 +174,8 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                         <tbody>
                                                             <tr>
                                                                 <th width="5%">S/N.</th>
-                                                                <th width="20%">Item Name</th>
                                                                 <th width="20%">Description</th>
+                                                                <th width="20%">Sub-Description</th>
                                                                 <th width="5%">Quantity</th>
                                                                 <th width="12.5%" rowspan="1">Amount</th>
                                                                 <th width="3%" rowspan="2"></th>
@@ -183,7 +183,7 @@ if (strlen($_SESSION['adid'] == 0)) {
                                                             <tr>
                                                                 <td><span id="sr_no">1</span></td>
                                                                 <td><input type="text" name="item_name" id="item_name" class="form-control input-sm"></td>
-                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" class="form-control input-sm"  required></td>
+                                                                <td><input type="text" name="item_description" id="item_description" data-srno="1" placeholder="Optional" class="form-control input-sm"></td>
                                                                 <td><input type="number" name="item_quantity" id="item_quantity" data-srno="1" class="form-control input-sm" min="0"  required></td>
                                                                 <td><input type="number" name="item_amount" id="item_amount" data-srno="1" class="form-control input-sm" min="0" value="<?php echo $total; ?>"  required></td>
                                                             </tr>

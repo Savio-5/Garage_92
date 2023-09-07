@@ -1,10 +1,11 @@
 <?php
 
-require('config.php');
+require('./razorpay/config.php');
 
 session_start();
 
-require('razorpay-php/Razorpay.php');
+require('./razorpay/razorpay-php/Razorpay.php');
+
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
 

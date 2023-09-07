@@ -12,12 +12,15 @@ if (strlen($_SESSION['adid'] == 0)) {
     if (isset($_POST['submit-new-service-requested'])) {
 
         $cid = $_GET['aticid'];
-        $admrmk = $_POST['AdminRemark'];
         $admsta = $_POST['status'];
-        $sercharge = $_POST['servicecharge'];
-        $addcharge = $_POST['addcharge'];
-        $partcharge = $_POST['partcharge'];
-        $serviceby = $_POST['serper'];
+        //  if(!empty($_POST['servicecharge'])){
+        // $admrmk = $_POST['AdminRemark'];
+        // $sercharge = $_POST['servicecharge'];
+        // $addcharge = $_POST['addcharge'];
+        // $partcharge = $_POST['partcharge'];
+        // $serviceby = $_POST['serper'];
+        // }
+        
         $query = mysqli_query($conn, "update  tblservicerequest set AdminStatus='$admsta' where ID='$cid'");
         if ($query) {
             $msg = "Status has been updated";

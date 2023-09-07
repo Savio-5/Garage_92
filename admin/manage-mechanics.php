@@ -9,8 +9,8 @@ $msg = "";
 if (strlen($_SESSION['adid'] == 0)) {
     header('location:logout.php');
 } else {
-    if (isset($_GET['ID'])) {
-        $eid = substr(base64_decode($_GET['ID']), 0, -5);
+    if (isset($_GET['id'])) {
+        $eid = substr(base64_decode($_GET['id']), 0, -5);
         $query = mysqli_query($conn, "delete from tblmechanics where ID='$eid'");
         if ($query) {
             echo "<script>alert('Mechanic Record deleted.');</script>";

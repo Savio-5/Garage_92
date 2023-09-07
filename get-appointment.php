@@ -245,20 +245,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Vehicle Registration Number</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" name="vehicleregno" id="vehicleregno" pattern="[A-Za-z]{2}-[0-9]{2}-[0-9]{4}" required="true">
+                                                            <!-- <input type="text" class="form-control" name="vehicleregno" id="vehicleregno" pattern="[A-Za-z]{2}-[0-9]{2}-[0-9]{4}" required="true"> -->
+                                                            <input type="text" class="form-control" name="vehicleregno" id="vehicleregno" placeholder="Example DL-01-XL-1234,DL-01-X-1234"  pattern="^[A-Za-z]{2,3}(-\d{2}(-[A-Za-z]{1,2})?)?-\d{3,4}$" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Service Date</label>
                                                         <div class="col-10">
-                                                            <input type="date" class="form-control" name="servicedate" id="servicedate" required="true">
+                                                            <input type="date" class="form-control" name="servicedate" id="servicedate" min="<?php echo date("Y-m-d"); ?>" required="true">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Service Time</label>
                                                         <div class="col-10">
-                                                            <input type="time" class="form-control" name="servicetime" id="servicetime" required="true">
+                                                            <input type="time" class="form-control" name="servicetime" id="servicetime" min="08:00" max="18:00" required="true">
                                                         </div>
                                                     </div>
 
